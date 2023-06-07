@@ -1,6 +1,7 @@
 package org.yqj.source.template;
 
-import junit.framework.TestCase;
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:
@@ -9,9 +10,10 @@ import junit.framework.TestCase;
  * @date 2023/6/6
  * Email: yaoqijunmail@foxmail.com
  */
-public class NoneTest extends TestCase {
-    public void testApp()
-    {
-        assertTrue( true );
+@Slf4j
+public class NoneTest {
+    @Test
+    public void testNone(){
+
     }
 }

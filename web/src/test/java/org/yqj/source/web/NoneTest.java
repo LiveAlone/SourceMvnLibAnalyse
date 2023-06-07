@@ -9,9 +9,10 @@ import junit.framework.TestCase;
  * @date 2023/6/6
  * Email: yaoqijunmail@foxmail.com
  */
-public class NoneTest extends TestCase {
-    public void testApp()
-    {
-        assertTrue( true );
+@Slf4j
+public class NoneTest {
+    @Test
+    public void testNone() {
+
     }
 }
