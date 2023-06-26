@@ -1,4 +1,4 @@
-package org.yqj.source.basic;
+package org.yqj.source.pattern;
 
 import com.google.common.collect.ImmutableList;
 import lombok.extern.slf4j.Slf4j;
@@ -18,6 +18,5 @@ public class BootDemoApplication {
         List<Integer> ls = ImmutableList.of(1, 2);
         log.debug("ls info is {}", ls);
         log.info("starting boot demo application ...");
-
     }
 }
