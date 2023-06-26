@@ -24,9 +24,10 @@
     </properties>
 
     <modules>
-<!--        <module>basic</module>-->
+<!--        <module>empty</module>-->
 <!--        <module>app</module>-->
 <!--        <module>web</module>-->
+        <module>basic</module>
     </modules>
 
 
