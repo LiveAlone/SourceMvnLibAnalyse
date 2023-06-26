@@ -1,4 +1,4 @@
-package org.yqj.source.template;
+package org.yqj.source.app;
 
 import org.springframework.boot.Banner;
 import org.springframework.boot.ansi.AnsiColor;

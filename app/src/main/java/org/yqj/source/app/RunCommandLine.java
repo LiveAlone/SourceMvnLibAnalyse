@@ -1,4 +1,4 @@
-package org.yqj.source.template;
+package org.yqj.source.app;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
