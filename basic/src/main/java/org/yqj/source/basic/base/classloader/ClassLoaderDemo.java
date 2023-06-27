@@ -22,9 +22,9 @@ public class ClassLoaderDemo {
     private static void myClassLoader(){
         try {
             ClassLoader classLoader1 = new MyClassLoader("classDir");
-            Class classDate1 = classLoader1.loadClass("MyDate");
+            Class classDate1 = classLoader1.loadClass("org.yqj.source.basic.base.classloader.MyDate");
 
-            ClassLoader classLoader2 = new MyClassLoader("target/classes/org/yqj/java/demo/classloader");
+            ClassLoader classLoader2 = new MyClassLoader("target/classes/org/yqj/source/basic/base/classloader");
             Class classDate2 = classLoader2.loadClass("MyDate");
 
             Date date = (Date) classDate1.newInstance();
