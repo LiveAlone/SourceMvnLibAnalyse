@@ -13,12 +13,12 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
  * Email: yaoqijunmail@foxmail.com
  */
 public class RWDictionaryDemo {
-    private final Map<String, Data> m = new TreeMap<String, Data>();
+    private final Map<String, Integer> m = new TreeMap<>();
     private final ReentrantReadWriteLock rwl = new ReentrantReadWriteLock();
     private final Lock r = rwl.readLock();
     private final Lock w = rwl.writeLock();
 
-    public Data get(String key) {
+    public Integer get(String key) {
         r.lock();
         try {
             return m.get(key);
@@ -36,7 +36,7 @@ public class RWDictionaryDemo {
         }
     }
 
-    public Data put(String key, Data value) {
+    public Integer put(String key, Integer value) {
         w.lock();
         try {
             return m.put(key, value);
@@ -52,8 +52,5 @@ public class RWDictionaryDemo {
         } finally {
             w.unlock();
         }
-    }
-
-    public static final class Data {
     }
 }

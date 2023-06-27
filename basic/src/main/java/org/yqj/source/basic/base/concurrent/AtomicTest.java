@@ -7,18 +7,18 @@ import java.util.concurrent.atomic.LongAdder;
  * Description:
  *
  * @author yaoqijun
- * @date 2022/2/18
+ * @date 2023/6/27
  * Email: yaoqijunmail@foxmail.com
  */
-public class Common {
+public class AtomicTest {
 
-    public void atomicAdder() {
+    public static void main(String[] args) {
+        atomicAdder();
+    }
+
+    public static void atomicAdder() {
         LongAdder longAdder = new LongAdder();
         longAdder.add(10);
         System.out.println(longAdder.sum());
-
-        ThreadLocalRandom.current(); // force initialization
-        Thread th = Thread.currentThread();
     }
-
 }

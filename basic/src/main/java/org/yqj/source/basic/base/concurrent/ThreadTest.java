@@ -1,5 +1,7 @@
 package org.yqj.source.basic.base.concurrent;
 
+import java.util.concurrent.locks.LockSupport;
+
 /**
  * Description:
  *
@@ -7,7 +9,7 @@ package org.yqj.source.basic.base.concurrent;
  * @date 2021/11/14
  * Email: yaoqijunmail@foxmail.com
  */
-public class ThreadMain {
+public class ThreadTest {
 
     public static void main(String[] args) throws Exception {
         tryToInterruptThread();
@@ -42,12 +44,15 @@ public class ThreadMain {
 //        Thread cur = new Thread(()->{
 //            System.out.println("current thread is to starting");
 //            LockSupport.park();
+//            System.out.println(Thread.currentThread().isInterrupted());
 //            System.out.println("current thread is alive");
 //        });
 
         cur.start();
         cur.interrupt();
+        System.out.println("thread has interrupt");
         Thread.sleep(10000);
+        System.out.println(cur.getState());
         System.out.println("interrupt finish all");
     }
 
