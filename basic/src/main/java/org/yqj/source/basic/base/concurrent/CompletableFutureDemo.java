@@ -11,21 +11,17 @@ import java.util.concurrent.ThreadLocalRandom;
  * Description:
  *
  * @author yaoqijun
- * @date 2020/3/17
+ * @date 2023/6/27
  * Email: yaoqijunmail@foxmail.com
  */
-public class CompletableFutureTest {
-
+public class CompletableFutureDemo {
     public static void main(String[] args) throws Exception {
-
 //        futureSingle();
 
-//         1. CompletableFuture price set
-        completableFutureSet();
+        // CompletableFuture 完成任务编排
+//        completableFutureSet();
 
 //        testCompleteOutput();
-
-//        calculateChain();
 
 //        runApplyAsyncConfig();
 
@@ -33,15 +29,15 @@ public class CompletableFutureTest {
 
 //        testThen();
 
-//        completableBothValueTest();
+        completableBothValueTest();
     }
 
     public static void completableBothValueTest(){
         ExecutorService es = Executors.newFixedThreadPool(10);
         System.out.println("main start");
 
-        CompletableFuture<Integer> c1 = CompletableFuture.supplyAsync(CompletableFutureTest::calculateRandomValue, es);
-        CompletableFuture<Integer> c2 = CompletableFuture.supplyAsync(CompletableFutureTest::calculateRandomValue, es);
+        CompletableFuture<Integer> c1 = CompletableFuture.supplyAsync(CompletableFutureDemo::calculateRandomValue, es);
+        CompletableFuture<Integer> c2 = CompletableFuture.supplyAsync(CompletableFutureDemo::calculateRandomValue, es);
 
         c2.thenAcceptBoth(c1, (a, b)->{
             System.out.println(a);
@@ -57,8 +53,8 @@ public class CompletableFutureTest {
         ExecutorService es = Executors.newFixedThreadPool(10);
         System.out.println("main start");
 
-        CompletableFuture.supplyAsync(CompletableFutureTest::calculateRandomValue, es)
-                .thenApply(s->"*****" + s.toString())
+        CompletableFuture.supplyAsync(CompletableFutureDemo::calculateRandomValue, es)
+                .thenApply(s -> "*****" + s.toString())
                 .whenComplete((v, e) -> System.out.println(v));
         System.out.println("main finish");
         es.shutdown();
@@ -67,45 +63,15 @@ public class CompletableFutureTest {
     public static void whenCompleteValueTestConfig() throws ExecutionException, InterruptedException {
         ExecutorService es = Executors.newFixedThreadPool(10);
         System.out.println("main start");
-//        CompletableFuture<Integer> sum = CompletableFuture.supplyAsync(CompletableFutureTest::calculateRandomValue, es)
-//                .whenComplete((a, e)-> {
+//        CompletableFuture<Integer> sum = CompletableFuture.supplyAsync(CompletableFutureDemo::calculateRandomValue, es)
+//                .whenComplete((a, e) -> {
 //                    System.out.println("start calculate random value in thread is " + Thread.currentThread().getName());
 //                    System.out.println(a);
 //                });
-//        CompletableFuture.completedFuture(100).whenComplete(CompletableFutureTest::outputValue);
-//        CompletableFuture.completedFuture(100).whenCompleteAsync(CompletableFutureTest::outputValue, es);
+//        CompletableFuture.completedFuture(100).whenComplete(CompletableFutureDemo::outputValue);
+        CompletableFuture.completedFuture(100).whenCompleteAsync(CompletableFutureDemo::outputValue, es);
         System.out.println("main finish");
         es.shutdown();
-    }
-
-    public static void runApplyAsyncConfig() throws Exception {
-        ExecutorService es = Executors.newFixedThreadPool(10);
-        System.out.println("main start");
-
-//        CompletableFuture.runAsync(()->{
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("current calculate value in thread is " + Thread.currentThread().getName());
-//        }, es);
-
-//        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(()->{
-//            try {
-//                Thread.sleep(2000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//            System.out.println("current calculate value in thread is " + Thread.currentThread().getName());
-//            return 100;
-//        }, es);
-//        System.out.println(completableFuture.isDone());
-//        System.out.println(completableFuture.get());
-
-        System.out.println("main finish");
-        es.shutdown();
-
     }
 
     private static <T, U> void outputValue(T value, U e) {
@@ -123,9 +89,38 @@ public class CompletableFutureTest {
         return ThreadLocalRandom.current().nextInt(1000);
     }
 
-    public static void testCompleteOutput() {
+    public static void runApplyAsyncConfig() throws Exception {
+        ExecutorService es = Executors.newFixedThreadPool(10);
+        System.out.println("main start");
+
+        CompletableFuture.runAsync(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("current calculate value in thread is " + Thread.currentThread().getName());
+        }, es);
+
+        CompletableFuture<Integer> completableFuture = CompletableFuture.supplyAsync(() -> {
+            try {
+                Thread.sleep(2000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            System.out.println("current calculate value in thread is " + Thread.currentThread().getName());
+            return 100;
+        }, es);
+        System.out.println(completableFuture.isDone());
+        System.out.println(completableFuture.get());
+
+        System.out.println("main finish");
+        es.shutdown();
+    }
+
+    public static void testCompleteOutput() throws Exception {
 //        CompletableFuture<Double> completableFuture = new CompletableFuture<>();
-//        new Thread(()->{
+//        new Thread(() -> {
 //            try {
 //                System.out.println("thread1 get value is " + completableFuture.get());
 //            } catch (InterruptedException e) {
@@ -134,7 +129,7 @@ public class CompletableFutureTest {
 //                e.printStackTrace();
 //            }
 //        }).start();
-//        new Thread(()->{
+//        new Thread(() -> {
 //            try {
 //                System.out.println("thread2 get value is " + completableFuture.get());
 //            } catch (InterruptedException e) {
@@ -145,6 +140,7 @@ public class CompletableFutureTest {
 //        }).start();
 //
 //        System.out.println("starting");
+//        Thread.sleep(5000);
 //        completableFuture.complete(666D);
 //        System.out.println("ending");
 
@@ -189,14 +185,18 @@ public class CompletableFutureTest {
 
     public static void futureSingle() throws Exception {
         System.out.println("main start");
-        ExecutorService es = Executors.newFixedThreadPool(10);
+        ExecutorService es = buildExecutorService();
         Future<Integer> f = es.submit(() -> {
             Thread.sleep(2000);
             return 100;
         });
         System.out.println(f.isDone());
         System.out.println(f.get());
-        System.out.println("main finish");
+        System.out.println("main end");
         es.shutdown();
+    }
+
+    public static ExecutorService buildExecutorService() {
+        return Executors.newFixedThreadPool(10);
     }
 }
