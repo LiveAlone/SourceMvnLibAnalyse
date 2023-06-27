@@ -28,7 +28,7 @@
 <!--        <module>app</module>-->
 <!--        <module>web</module>-->
         <module>basic</module>
-        <module>pattern</module>
+<!--        <module>pattern</module>-->
     </modules>
 
 
