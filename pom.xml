@@ -24,11 +24,17 @@
     </properties>
 
     <modules>
+        <!-- template -->
 <!--        <module>empty</module>-->
 <!--        <module>app</module>-->
 <!--        <module>web</module>-->
-        <module>basic</module>
+
+        <!-- jdk basic -->
+<!--        <module>basic</module>-->
 <!--        <module>pattern</module>-->
+
+        <!-- spring  -->
+        <module>sp-core</module>
     </modules>
 
 

@@ -9,3 +9,7 @@
 
 1. basic jdk基础类库内demo解析。
 2. Pattern-Design 设计模式Demo模块
+
+
+### Spring Boot 应用模块
+1. sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
