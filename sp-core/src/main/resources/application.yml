@@ -1,3 +1,11 @@
 logging:
   level:
-    root: DEBUG
+    root: INFO
+
+app:
+  name: spring
+  alias: ${app.name:haha}
+
+spring:
+  profiles:
+    active: yao,qi,jun
