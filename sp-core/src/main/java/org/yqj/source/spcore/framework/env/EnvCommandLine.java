@@ -38,9 +38,14 @@ public class EnvCommandLine implements CommandLineRunner, EnvironmentAware {
 //        String appAlias = environment.getProperty("app.alias");
 //        log.info("config app.alias is:{}", appAlias);
 
-        String valueFirst = environment.getProperty("config.value_first");
-        log.info("config value first is:{}", valueFirst);
-        log.info("config value first from bean is:{}", configurationBean.getValueFirst());
+//        String valueFirst = environment.getProperty("config.value_first");
+//        log.info("config value first is:{}", valueFirst);
+//        log.info("config value first from bean is:{}", configurationBean.getValueFirst());
+
+        String processorValue = environment.getProperty("processor.value");
+        log.info("config processor value is :{}", processorValue);
+
+        log.info("configuration bean info is :{}", configurationBean);
     }
 
     @Override

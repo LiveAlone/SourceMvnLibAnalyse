@@ -1,0 +1,4 @@
+# ???Environment Processor ???
+org.springframework.boot.env.EnvironmentPostProcessor=\
+  org.yqj.source.spcore.framework.env.LocalEnvProcessor
+
