@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @date 2023/7/4
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class EnvCommandLine implements CommandLineRunner, EnvironmentAware {
 

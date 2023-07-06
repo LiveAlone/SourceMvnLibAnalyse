@@ -15,6 +15,7 @@ public class BootDemoApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
                 .banner(new DemoBanner())
+                .allowCircularReferences(true)
                 .sources(BootDemoApplication.class)
                 .run(args);
     }

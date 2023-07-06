@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2023/7/4
  * Email: yaoqijunmail@foxmail.com
  */
-@Configuration
+//@Configuration
 @Data
 public class ConfigurationBean {
 
