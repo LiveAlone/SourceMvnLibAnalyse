@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * @date 2023/7/12
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class EventCommandLine implements CommandLineRunner {
 

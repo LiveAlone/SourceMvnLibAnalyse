@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2021/4/26
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class FruitEventListener {
 

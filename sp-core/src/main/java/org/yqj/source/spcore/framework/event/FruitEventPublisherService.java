@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
  * @date 2021/6/7
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class FruitEventPublisherService implements ApplicationEventPublisherAware {
 

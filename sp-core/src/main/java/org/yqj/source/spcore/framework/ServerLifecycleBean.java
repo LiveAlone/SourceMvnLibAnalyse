@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
  * @date 2020/12/10
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class ServerLifecycleBean implements SmartLifecycle {
 
