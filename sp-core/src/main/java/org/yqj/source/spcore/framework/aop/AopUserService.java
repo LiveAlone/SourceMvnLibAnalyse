@@ -14,7 +14,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * @date 2022/1/26
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class AopUserService {
 

@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
  * @date 2022/1/26
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Aspect
 @Slf4j
 public class BusinessTraceAspect {

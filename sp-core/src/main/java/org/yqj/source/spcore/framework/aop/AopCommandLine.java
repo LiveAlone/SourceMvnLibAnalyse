@@ -13,7 +13,7 @@ import org.yqj.source.spcore.framework.aop.entity.AopUser;
  * @date 2023/7/13
  * Email: yaoqijunmail@foxmail.com
  */
-@Component
+//@Component
 @Slf4j
 public class AopCommandLine implements CommandLineRunner {
 
