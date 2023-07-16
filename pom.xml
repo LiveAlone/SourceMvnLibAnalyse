@@ -34,7 +34,8 @@
 <!--        <module>pattern</module>-->
 
         <!-- spring  -->
-        <module>sp-core</module>
+<!--        <module>sp-core</module>-->
+        <module>sp-cache</module>
     </modules>
 
 

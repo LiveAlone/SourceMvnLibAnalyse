@@ -13,3 +13,4 @@
 
 ### Spring Boot 应用模块
 1. sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
+2. sp-cache springCache缓存模块，redis, ehcache, guava, caffeine 等缓存模块支持。

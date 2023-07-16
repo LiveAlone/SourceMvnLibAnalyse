@@ -2,6 +2,7 @@ package org.yqj.source.spcache;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 
 /**
  * Description:
@@ -11,10 +12,10 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
  * Email: yaoqijunmail@foxmail.com
  */
 @SpringBootApplication
+@EnableCaching
 public class BootDemoApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .banner(new DemoBanner())
                 .sources(BootDemoApplication.class)
                 .run(args);
     }
