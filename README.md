@@ -9,6 +9,8 @@
 
 1. basic jdk基础类库内demo解析。
 2. Pattern-Design 设计模式Demo模块
+3. utils 常用工具集合
+  - 缓存 guavaCache, Caffeine支持内存缓存
 
 
 ### Spring Boot 应用模块
