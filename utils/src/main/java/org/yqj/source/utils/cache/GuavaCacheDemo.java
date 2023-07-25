@@ -24,11 +24,11 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class GuavaCacheDemo {
     public static void main(String[] args) throws Exception {
-//        CacheLoadDemo();
+        CacheLoadDemo();
 
 //        CallableDemo();
 
-        PutDemo();
+//        PutDemo();
     }
 
     private static void EvictionStrategy() {
@@ -83,6 +83,8 @@ public class GuavaCacheDemo {
                                 return String.format("%s-Cache-Loader", key);
                             }
                         });
+
+        cache.put("test", "handlePutTest");
         try {
             String result = cache.get("test");
             log.info("result is {}", result);
