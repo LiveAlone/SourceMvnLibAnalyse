@@ -22,9 +22,4 @@ public class BootDemoApplication {
                 .sources(BootDemoApplication.class)
                 .run(args);
     }
-
-    @GetMapping(value = "/index", produces = MediaType.APPLICATION_JSON_VALUE)
-    public String indexPage(){
-        return "this is test index paging info";
-    }
 }
