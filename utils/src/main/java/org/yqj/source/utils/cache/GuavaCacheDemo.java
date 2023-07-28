@@ -6,6 +6,7 @@ import com.google.common.cache.CacheLoader;
 import com.google.common.cache.LoadingCache;
 import com.google.common.cache.Weigher;
 import com.google.common.graph.Graph;
+import com.google.common.util.concurrent.ListenableFuture;
 import lombok.extern.slf4j.Slf4j;
 
 import javax.annotation.Nonnull;
@@ -24,11 +25,54 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class GuavaCacheDemo {
     public static void main(String[] args) throws Exception {
-        CacheLoadDemo();
+//        CacheLoadDemo();
 
-//        CallableDemo();
+//        CallableExpireDemo();
 
 //        PutDemo();
+
+        expireRefreshWrite();
+
+    }
+
+    private static void expireRefreshWrite() throws Exception {
+        LoadingCache<String, String> cache = CacheBuilder.newBuilder()
+                .maximumSize(16)
+//                .expireAfterAccess(1, TimeUnit.SECONDS)
+//                .expireAfterWrite(1, TimeUnit.SECONDS)
+                .refreshAfterWrite(1, TimeUnit.SECONDS)
+                .build(new CacheLoader<String, String>() {
+                    @Override
+                    public String load(String key) throws Exception {
+                        Thread.sleep(5000);
+                        return String.format("%s-Cache-Loader", key);
+                    }
+
+                    @Override
+                    public ListenableFuture<String> reload(String key, String oldValue) throws Exception {
+                        // 线程异步方式load
+                        return super.reload(key, oldValue);
+                    }
+                });
+        cache.put("expire", "expire");
+        Thread.sleep(2000);
+        int ct = 10;
+        for (int i = 0; i < ct; i++) {
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try {
+                        String value = cache.get("expire");
+                        log.info("thread:{} value is {}", Thread.currentThread().getName(), value);
+                    } catch (Exception e) {
+                        log.error("get cache error", e);
+                    }
+                }
+            }).start();
+        }
+        Thread.sleep(10000);
+        String content = cache.get("expire");
+        log.info("content is {}", content);
     }
 
     private static void EvictionStrategy() {
@@ -50,32 +94,27 @@ public class GuavaCacheDemo {
                 .build();
     }
 
-    private static void PutDemo() {
-        Cache<String, String> graphs = CacheBuilder.newBuilder()
-                .maximumSize(1000)
-                .expireAfterWrite(10, TimeUnit.MINUTES)
-                .build();
-        graphs.put("k1", "v1");
-        log.info("k1 value is {}", graphs.getIfPresent("k1"));
-    }
-
-    private static void CallableDemo() {
+    private static void CallableExpireDemo() {
         Cache<String, String> cache = CacheBuilder.newBuilder()
-                .maximumSize(1000)
-                .expireAfterAccess(10, TimeUnit.MINUTES)
+                .maximumSize(16)
+                .expireAfterAccess(1, TimeUnit.SECONDS)
                 .build();
+        cache.put("expire", "expire");
         try {
-            String result = cache.get("test", () -> String.format("%s-Callable", "test"));
+            Thread.sleep(2000);
+            String result = cache.get("expire", () -> String.format("%s-Callable", "expire"));
             log.info("result is {}", result);
-        } catch (ExecutionException e) {
+        } catch (Exception e) {
             log.error("get cache error", e);
         }
     }
 
     private static void CacheLoadDemo() {
-        LoadingCache<String, String> cache = CacheBuilder.newBuilder()
-                .maximumSize(1000)
-                .expireAfterAccess(10, TimeUnit.MINUTES)
+        LoadingCache<String, String> demoCache = CacheBuilder.newBuilder()
+                .removalListener(notification -> {
+                    log.info("remove key is {}, value is {}", notification.getKey(), notification.getValue());
+                })
+                .maximumSize(16)
                 .build(
                         new CacheLoader<String, String>() {
                             @Override
@@ -83,13 +122,9 @@ public class GuavaCacheDemo {
                                 return String.format("%s-Cache-Loader", key);
                             }
                         });
-
-        cache.put("test", "handlePutTest");
-        try {
-            String result = cache.get("test");
-            log.info("result is {}", result);
-        } catch (ExecutionException e) {
-            log.error("get cache error", e);
+        for (int i = 0; i < 20; i++) {
+            demoCache.put(String.valueOf(i), String.valueOf(i));
         }
+        demoCache.put("123", "456");
     }
 }

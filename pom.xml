@@ -32,7 +32,7 @@
         <!-- jdk basic -->
 <!--        <module>basic</module>-->
 <!--        <module>pattern</module>-->
-<!--        <module>utils</module>-->
+        <module>utils</module>
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
