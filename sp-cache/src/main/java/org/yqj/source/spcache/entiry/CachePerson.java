@@ -1,4 +1,4 @@
-package org.yqj.source.spcache;
+package org.yqj.source.spcache.entiry;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

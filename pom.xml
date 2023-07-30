@@ -25,18 +25,18 @@
 
     <modules>
         <!-- template -->
-        <module>empty</module>
+<!--        <module>empty</module>-->
 <!--        <module>app</module>-->
 <!--        <module>web</module>-->
 
         <!-- jdk basic -->
 <!--        <module>basic</module>-->
 <!--        <module>pattern</module>-->
-        <module>utils</module>
+<!--        <module>utils</module>-->
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
-<!--        <module>sp-cache</module>-->
+        <module>sp-cache</module>
     </modules>
 
 

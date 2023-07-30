@@ -1,9 +1,17 @@
 package org.yqj.source.spcache;
 
+import com.github.benmanes.caffeine.cache.Caffeine;
+import com.github.benmanes.caffeine.cache.RemovalCause;
+import com.github.benmanes.caffeine.cache.RemovalListener;
+import lombok.extern.slf4j.Slf4j;
+import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.cache.CacheManager;
+import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.concurrent.TimeUnit;
 
 /**
  * Description:
@@ -13,6 +21,7 @@ import org.springframework.context.annotation.Configuration;
  * Email: yaoqijunmail@foxmail.com
  */
 @Configuration
+@Slf4j
 public class CacheConfiguration {
 
 //    @Bean
@@ -39,8 +48,33 @@ public class CacheConfiguration {
 //                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
 //    }
 
+
     @Bean
-    public CacheManager localCacheManager() {
-        return new ConcurrentMapCacheManager();
+    public CacheManager cacheManager(Caffeine caffeine) {
+        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
+        caffeineCacheManager.setCaffeine(caffeine);
+        return caffeineCacheManager;
     }
+
+    @Bean
+    public Caffeine caffeineConfig() {
+        return Caffeine.newBuilder()
+                .maximumSize(10)
+                .expireAfterWrite(60, TimeUnit.SECONDS)
+                .removalListener(new RemovalListener<Object, Object>() {
+                    @Override
+                    public void onRemoval(@Nullable Object key, @Nullable Object value, RemovalCause cause) {
+                        log.info("remove key is :{}, value is :{}, cause is :{}", key, value, cause);
+                    }
+                });
+    }
+
+//    /**
+//     * 1. 基于Map的本地缓存
+//     * @return ConcurrentMapCacheManager
+//     */
+//    @Bean
+//    public CacheManager cacheManager() {
+//        return new ConcurrentMapCacheManager();
+//    }
 }

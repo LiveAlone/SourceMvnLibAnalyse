@@ -1,8 +1,9 @@
-package org.yqj.source.spcache;
+package org.yqj.source.spcache.entiry;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Component;
+import org.yqj.source.spcache.entiry.CachePerson;
 
 /**
  * Description:
@@ -15,9 +16,11 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class PersonService {
 
-    @Cacheable(value = "itemCache")
-    public CachePerson gainCachePerson(long id) {
+    public static final String CACHE_PERSON = "gainCachePerson";
+
+    @Cacheable(value = CACHE_PERSON)
+    public CachePerson gainCachePerson(long id, int age) {
         log.info("******** gain cache person without cache");
-        return new CachePerson(id, "test", 10);
+        return new CachePerson(id, "test", age);
     }
 }
