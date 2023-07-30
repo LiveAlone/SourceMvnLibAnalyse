@@ -1,17 +1,15 @@
 package org.yqj.source.spcache;
 
-import com.github.benmanes.caffeine.cache.Caffeine;
-import com.github.benmanes.caffeine.cache.RemovalCause;
-import com.github.benmanes.caffeine.cache.RemovalListener;
 import lombok.extern.slf4j.Slf4j;
-import org.checkerframework.checker.nullness.qual.Nullable;
 import org.springframework.cache.CacheManager;
-import org.springframework.cache.caffeine.CaffeineCacheManager;
 import org.springframework.cache.concurrent.ConcurrentMapCacheManager;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.cache.RedisCacheConfiguration;
+import org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer;
+import org.springframework.data.redis.serializer.RedisSerializationContext;
 
-import java.util.concurrent.TimeUnit;
+import java.time.Duration;
 
 /**
  * Description:
@@ -24,14 +22,18 @@ import java.util.concurrent.TimeUnit;
 @Slf4j
 public class CacheConfiguration {
 
-//    @Bean
-//    public RedisCacheConfiguration redisCacheConfiguration() {
-//        // 默认全局配置, 自动创建CacheName
-//        return RedisCacheConfiguration.defaultCacheConfig()
-//                .entryTtl(Duration.ofMinutes(10)).disableCachingNullValues()
-//                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
-//    }
-
+    /**
+     * redis cache 缓存支持方式
+     * @return RedisCacheConfiguration
+     */
+    @Bean
+    public RedisCacheConfiguration redisCacheConfiguration() {
+        // 默认全局配置, 自动创建CacheName
+        return RedisCacheConfiguration.defaultCacheConfig()
+                .entryTtl(Duration.ofMinutes(10)).
+                disableCachingNullValues()
+                .serializeValuesWith(RedisSerializationContext.SerializationPair.fromSerializer(new GenericJackson2JsonRedisSerializer()));
+    }
 
 //    @Bean
 //    public RedisCacheManagerBuilderCustomizer redisCacheManagerBuilderCustomizer() {
@@ -49,25 +51,25 @@ public class CacheConfiguration {
 //    }
 
 
-    @Bean
-    public CacheManager cacheManager(Caffeine caffeine) {
-        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
-        caffeineCacheManager.setCaffeine(caffeine);
-        return caffeineCacheManager;
-    }
-
-    @Bean
-    public Caffeine caffeineConfig() {
-        return Caffeine.newBuilder()
-                .maximumSize(10)
-                .expireAfterWrite(60, TimeUnit.SECONDS)
-                .removalListener(new RemovalListener<Object, Object>() {
-                    @Override
-                    public void onRemoval(@Nullable Object key, @Nullable Object value, RemovalCause cause) {
-                        log.info("remove key is :{}, value is :{}, cause is :{}", key, value, cause);
-                    }
-                });
-    }
+//    @Bean
+//    public CacheManager cacheManager(Caffeine caffeine) {
+//        CaffeineCacheManager caffeineCacheManager = new CaffeineCacheManager();
+//        caffeineCacheManager.setCaffeine(caffeine);
+//        return caffeineCacheManager;
+//    }
+//
+//    @Bean
+//    public Caffeine caffeineConfig() {
+//        return Caffeine.newBuilder()
+//                .maximumSize(10)
+//                .expireAfterWrite(60, TimeUnit.SECONDS)
+//                .removalListener(new RemovalListener<Object, Object>() {
+//                    @Override
+//                    public void onRemoval(@Nullable Object key, @Nullable Object value, RemovalCause cause) {
+//                        log.info("remove key is :{}, value is :{}, cause is :{}", key, value, cause);
+//                    }
+//                });
+//    }
 
 //    /**
 //     * 1. 基于Map的本地缓存
