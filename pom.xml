@@ -27,7 +27,7 @@
         <!-- template -->
 <!--        <module>empty</module>-->
 <!--        <module>app</module>-->
-<!--        <module>web</module>-->
+        <module>web</module>
 
         <!-- jdk basic -->
 <!--        <module>basic</module>-->
