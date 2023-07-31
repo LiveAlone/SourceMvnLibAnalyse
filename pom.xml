@@ -27,7 +27,7 @@
         <!-- template -->
 <!--        <module>empty</module>-->
 <!--        <module>app</module>-->
-        <module>web</module>
+<!--        <module>web</module>-->
 
         <!-- jdk basic -->
 <!--        <module>basic</module>-->
@@ -35,8 +35,8 @@
 <!--        <module>utils</module>-->
 
         <!-- spring  -->
-<!--        <module>sp-core</module>-->
-        <module>sp-cache</module>
+        <module>sp-core</module>
+<!--        <module>sp-cache</module>-->
     </modules>
 
 

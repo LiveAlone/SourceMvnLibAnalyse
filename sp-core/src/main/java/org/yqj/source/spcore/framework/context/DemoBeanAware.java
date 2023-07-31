@@ -7,6 +7,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.BeanNameAware;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ApplicationContextAware;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -16,7 +17,7 @@ import org.springframework.context.ApplicationContextAware;
  * @date 2022/1/18
  * Email: yaoqijunmail@foxmail.com
  */
-//@Component
+@Component
 @Slf4j
 public class DemoBeanAware implements BeanNameAware, ApplicationContextAware {
 
