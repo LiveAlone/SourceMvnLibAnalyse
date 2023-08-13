@@ -2,6 +2,7 @@ package org.yqj.source.spcore;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 
 /**
@@ -13,6 +14,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  */
 @SpringBootApplication
 @EnableAspectJAutoProxy
+@EnableCaching
 public class BootDemoApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
