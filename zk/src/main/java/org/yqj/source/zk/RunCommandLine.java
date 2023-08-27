@@ -1,4 +1,4 @@
-package org.yqj.source.app;
+package org.yqj.source.zk;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;
@@ -16,6 +16,6 @@ import org.springframework.stereotype.Component;
 public class RunCommandLine implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        log.info("starting command line ...");
+        log.info("zk models run command line");
     }
 }

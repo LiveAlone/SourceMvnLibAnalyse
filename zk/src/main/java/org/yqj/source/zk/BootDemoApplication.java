@@ -1,4 +1,4 @@
-package org.yqj.source.app;
+package org.yqj.source.zk;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
