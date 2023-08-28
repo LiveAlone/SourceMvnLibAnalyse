@@ -18,6 +18,10 @@
 
     # 连接方式
     docker run -it --rm --link local-zk-single:zookeeper zookeeper zkCli.sh -server zookeeper
+    
+    # 通过network方式，容器命令方式执行
+    docker run --name some-zookeeper --restart always --network zk -d zookeeper
+    docker run -it --rm --network zk zookeeper zkCli.sh -server zookeeper
     ``` 
 
 ## 官网示例
