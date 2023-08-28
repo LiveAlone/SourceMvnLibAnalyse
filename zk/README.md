@@ -7,8 +7,12 @@
     
     ```bash
     docker-compose -f compose.yml -p local-zk-cluster up -d
+
+     # 通过network方式，容器命令方式执行
+    docker run --name some-zookeeper --restart always --network local-zk-cluster_default -d zookeeper
+    docker run -it --rm --network local-zk-cluster_default zookeeper zkCli.sh -server zoo1
     ```
-暴露端口 2181, 2182, 2183。
+暴露端口 2181, 2182, 2183
 
 ### 单点测试方式启动
 通过 compose 启动一个 zk 单点，包含 1 个节点
@@ -18,10 +22,6 @@
 
     # 连接方式
     docker run -it --rm --link local-zk-single:zookeeper zookeeper zkCli.sh -server zookeeper
-    
-    # 通过network方式，容器命令方式执行
-    docker run --name some-zookeeper --restart always --network zk -d zookeeper
-    docker run -it --rm --network zk zookeeper zkCli.sh -server zookeeper
     ``` 
 
 ## 官网示例
@@ -42,7 +42,5 @@
     delete /zk_test
     ```
 ## 执行
-   
-   ```bash
-   mvn spring-boot:run 
-   ```
+
+### 提供多个进程模拟Crash执行过程

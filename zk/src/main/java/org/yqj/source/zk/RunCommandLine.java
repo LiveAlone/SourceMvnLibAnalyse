@@ -16,9 +16,5 @@ import org.springframework.stereotype.Component;
 public class RunCommandLine implements CommandLineRunner {
     @Override
     public void run(String... args) throws Exception {
-        for (int i = 0; i < 100; i++) {
-            log.info("second run");
-            Thread.sleep(1000);
-        }
     }
 }
