@@ -41,3 +41,8 @@
     # 删除节点，监听停止执行任务
     delete /zk_test
     ```
+## 执行
+   
+   ```bash
+   mvn spring-boot:run 
+   ```
