@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
  * @author qjyao
  * @date 2023/8/28
  */
-@Component
+//@Component
 @Slf4j
 public class GetStartCommandLine implements CommandLineRunner {
 
