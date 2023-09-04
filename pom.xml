@@ -37,7 +37,8 @@
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
-        <module>zk</module>
+<!--        <module>zk</module>-->
+        <module>actuator</module>
     </modules>
 
 
