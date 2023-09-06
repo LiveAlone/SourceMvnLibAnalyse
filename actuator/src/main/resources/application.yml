@@ -1,3 +1,15 @@
 logging:
   level:
     root: INFO
+
+spring:
+  application:
+    name: actuator_local_test
+
+management:
+  endpoints:
+    enabled-by-default: true
+    web:
+      exposure:
+        include: "*"
+        exclude: "prometheus"
