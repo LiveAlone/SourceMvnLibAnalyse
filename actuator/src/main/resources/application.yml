@@ -13,3 +13,9 @@ management:
       exposure:
         include: "*"
         exclude: "prometheus"
+#  server:
+#    port: 8081
+  metrics:
+    tags:
+      region: "us-east-1"
+      stack: "prod"

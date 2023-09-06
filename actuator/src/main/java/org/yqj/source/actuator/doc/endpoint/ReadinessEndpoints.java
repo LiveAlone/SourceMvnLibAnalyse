@@ -1,9 +1,10 @@
-package org.yqj.source.actuator.health;
+package org.yqj.source.actuator.doc.endpoint;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;
 import org.springframework.boot.actuate.endpoint.annotation.ReadOperation;
+import org.springframework.boot.actuate.endpoint.annotation.WriteOperation;
 import org.springframework.stereotype.Component;
 
 /**
@@ -22,6 +23,10 @@ public class ReadinessEndpoints {
         return new Readiness("health", "test");
     }
 
+    @WriteOperation
+    public Readiness writeInfo(String health, String name) {
+        return new Readiness(health, name);
+    }
 
     @AllArgsConstructor
     @Data

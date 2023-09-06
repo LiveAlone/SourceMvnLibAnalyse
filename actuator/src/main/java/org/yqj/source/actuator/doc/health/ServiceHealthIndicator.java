@@ -1,4 +1,4 @@
-package org.yqj.source.actuator.health;
+package org.yqj.source.actuator.doc.health;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
