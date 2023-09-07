@@ -7,15 +7,22 @@ spring:
     name: actuator_local_test
 
 management:
+  prometheus:
+    metrics:
+      export:
+        enabled: true
   endpoints:
-    enabled-by-default: true
+#    enabled-by-default: true
+    jmx:
+      exposure:
+        exclude: "*"
     web:
       exposure:
-        include: "*"
-        exclude: "prometheus"
+        include: health,info,metrics,prometheus
+#        exclude: "prometheus"
 #  server:
 #    port: 8081
-  metrics:
-    tags:
-      region: "us-east-1"
-      stack: "prod"
+#  metrics:
+#    tags:
+#      region: "us-east-1"
+#      stack: "prod"
