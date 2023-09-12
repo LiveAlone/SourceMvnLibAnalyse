@@ -38,9 +38,11 @@
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
 <!--        <module>zk</module>-->
-        <module>actuator</module>
-    </modules>
+<!--        <module>actuator</module>-->
 
+        <!-- spring cloud -->
+        <module>cloud-feign-la</module>
+    </modules>
 
     <dependencyManagement>
         <dependencies>
@@ -50,6 +52,18 @@
                 <artifactId>guava</artifactId>
                 <version>29.0-jre</version>
             </dependency>
+
+            <!-- spring cloud 依赖管理 -->
+            <!-- https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-dependencies -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>2022.0.4</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+
         </dependencies>
     </dependencyManagement>
 </project>

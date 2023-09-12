@@ -1,4 +1,4 @@
-package org.yqj.source.web.dto;
+package org.yqj.source.cloud.feignla.dto;
 
 
 import lombok.Data;

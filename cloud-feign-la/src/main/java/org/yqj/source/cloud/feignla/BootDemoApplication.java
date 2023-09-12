@@ -1,4 +1,4 @@
-package org.yqj.source.web;
+package org.yqj.source.cloud.feignla;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
