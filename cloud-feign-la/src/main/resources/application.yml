@@ -1,3 +1,13 @@
 logging:
   level:
     root: INFO
+
+spring:
+  application:
+    name: feign-la
+  cloud:
+    zookeeper:
+      discovery:
+        enabled: true
+        root: /local-services
+      connect-string: localhost:2181

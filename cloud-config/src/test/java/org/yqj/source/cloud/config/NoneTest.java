@@ -1,6 +1,8 @@
-package org.yqj.source.web;
+package org.yqj.source.cloud.config;
 
-import junit.framework.TestCase;
+
+import lombok.extern.slf4j.Slf4j;
+import org.junit.jupiter.api.Test;
 
 /**
  * Description:

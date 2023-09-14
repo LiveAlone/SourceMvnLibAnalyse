@@ -1,4 +1,4 @@
-package org.yqj.source.cloud;
+package org.yqj.source.cloud.feignla;
 
 import junit.framework.TestCase;
 

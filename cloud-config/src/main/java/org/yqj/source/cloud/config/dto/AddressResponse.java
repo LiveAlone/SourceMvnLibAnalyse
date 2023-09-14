@@ -1,4 +1,4 @@
-package org.yqj.source.cloud.dto;
+package org.yqj.source.cloud.config.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

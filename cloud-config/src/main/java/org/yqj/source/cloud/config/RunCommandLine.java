@@ -1,6 +1,7 @@
-package org.yqj.source.cloud;
+package org.yqj.source.cloud.config;
 
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -14,8 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 @Slf4j
 public class RunCommandLine implements CommandLineRunner {
+
+    @Value("${spring.application.name:none}")
+    private String applicationName;
+
     @Override
     public void run(String... args) throws Exception {
-        log.info("starting command line ...");
+        log.info("application :{} starting", applicationName);
     }
 }
