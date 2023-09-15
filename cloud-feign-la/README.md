@@ -17,6 +17,6 @@
     # 服务访问方式
     curl http://localhost:8080/server
 
-    # 启动方式命令行
-    mvn spring-boot:run -Dspring-boot.run.arguments=--spring.application.name=h1
+    # 启动方式命令行, 注册执行列表
+    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=123123
     ```
