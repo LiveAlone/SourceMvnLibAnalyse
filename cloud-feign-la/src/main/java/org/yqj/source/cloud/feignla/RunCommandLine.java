@@ -16,7 +16,7 @@ import org.springframework.stereotype.Component;
 @Slf4j
 public class RunCommandLine implements CommandLineRunner {
 
-    @Value("${local.config:none}")
+    @Value("${spring.application.name}")
     private String applicationName;
 
     @Override

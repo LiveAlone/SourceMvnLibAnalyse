@@ -10,3 +10,13 @@
     # 连接方式
     docker run -it --rm --link local-zk-single:zookeeper zookeeper zkCli.sh -server zookeeper
     ```
+
+## 2. 服务网管启动方式
+
+    ```bash
+    # 服务访问方式
+    curl http://localhost:8080/server
+
+    # 启动方式命令行
+    mvn spring-boot:run -Dspring-boot.run.arguments=--spring.application.name=h1
+    ```
