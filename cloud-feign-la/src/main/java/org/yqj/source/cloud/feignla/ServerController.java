@@ -5,9 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+import org.yqj.source.cloud.feignla.dto.BaseRequest;
 import org.yqj.source.cloud.feignla.dto.BaseResponse;
 
 import java.util.Arrays;
@@ -26,7 +28,8 @@ public class ServerController {
     private String applicationName;
 
     @RequestMapping(value = "/server", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse<String> health(HttpServletRequest request){
+    public BaseResponse<String> health(@RequestBody BaseRequest request){
+        log.info("local server gain request :{}", request);
         return BaseResponse.successResponse(String.format("hello %s", applicationName));
     }
 }

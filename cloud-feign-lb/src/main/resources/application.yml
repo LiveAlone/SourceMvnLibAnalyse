@@ -4,13 +4,10 @@ logging:
 
 spring:
   application:
-    name: feign-la
+    name: feign-lb
   cloud:
     zookeeper:
       discovery:
         enabled: true
         prefer-ip-address: true
       connect-string: localhost:2181
-
-server:
-  port: 9090
