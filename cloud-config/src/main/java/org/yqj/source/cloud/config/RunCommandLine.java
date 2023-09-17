@@ -21,14 +21,14 @@ public class RunCommandLine implements CommandLineRunner {
     @Value("${spring.application.name:none}")
     private String applicationName;
 
-    @Value("${user.name:none}")
-    private String username;
+    @Value("${remote.test:none}")
+    private String testConfig;
 
     @Autowired
     private ApplicationContext applicationContext;
 
     @Override
     public void run(String... args) throws Exception {
-        log.info("application :{} starting user:{}", applicationName, username);
+        log.info("application :{} starting test:{}", applicationName, testConfig);
     }
 }
