@@ -18,7 +18,7 @@
     curl http://localhost:8080/server
 
     # 服务名方式注册服务列表
-    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-server --server.port=9090
-    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-server --server.port=9091
-    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-server --server.port=9092
+    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-la --server.port=9090
+    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-la --server.port=9091
+    java -jar .\target\cloud-feign-la-1.0-SNAPSHOT.jar --spring.application.name=feign-la --server.port=9092
     ```

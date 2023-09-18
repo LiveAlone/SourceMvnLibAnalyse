@@ -27,14 +27,27 @@ public class FeignController {
     private String applicationName;
 
     @GetMapping("/info")
-    public BaseResponse<String> info(@RequestParam("id") String id){
+    public BaseResponse<String> info(@RequestParam("id") String id) {
         log.info("local info gain request id :{}", id);
         return BaseResponse.successResponse(String.format("hello %s", id));
     }
 
     @PostMapping(value = "/server", produces = MediaType.APPLICATION_JSON_VALUE)
-    public BaseResponse<String> server(@RequestBody BaseRequest request){
+    public BaseResponse<String> server(@RequestBody BaseRequest request) {
         log.info("local server gain request :{}", request);
         return BaseResponse.successResponse(String.format("hello %s", applicationName));
+    }
+
+    @GetMapping("/timeout")
+    public BaseResponse<String> timeoutCall(@RequestParam("id") String id) throws InterruptedException {
+        log.info("local timeout gain request id :{}", id);
+        Thread.sleep(1000);
+        log.info("local timeout gain request id :{} return", id);
+        return BaseResponse.successResponse(String.format("timeout return %s", id));
+    }
+
+    @GetMapping("/fail")
+    public BaseResponse<String> failCall() {
+        throw new RuntimeException("fail call");
     }
 }

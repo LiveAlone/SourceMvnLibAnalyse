@@ -11,3 +11,11 @@ spring:
         enabled: true
         prefer-ip-address: true
       connect-string: localhost:2181
+    openfeign:
+      client:
+        config:
+          default:
+            connectTimeout: 3000
+            readTimeout: 500
+            loggerLevel: full
+            retryer: feign.Retryer.Default

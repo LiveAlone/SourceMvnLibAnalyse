@@ -19,4 +19,7 @@ public interface LaServer {
 
     @RequestMapping(value = "/info", method = RequestMethod.GET)
     BaseResponse<String> info(@RequestParam("id") String id);
+
+    @RequestMapping(value = "/timeout", method = RequestMethod.GET)
+    BaseResponse<String> timeoutCall(@RequestParam("id") String id);
 }
