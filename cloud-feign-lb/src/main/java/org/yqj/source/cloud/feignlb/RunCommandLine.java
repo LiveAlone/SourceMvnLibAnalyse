@@ -40,7 +40,10 @@ public class RunCommandLine implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         for (int i = 0; i < 10; i++) {
-            BaseResponse<String> resp = laServer.server(new BaseRequest((long) i, "yaoqijun"));
+//            BaseResponse<String> resp = laServer.server(new BaseRequest((long) i, "yaoqijun"));
+//            log.info("command line runner is resp: {}", resp);
+
+            BaseResponse<String> resp = laServer.info(String.valueOf(i));
             log.info("command line runner is resp: {}", resp);
         }
     }
