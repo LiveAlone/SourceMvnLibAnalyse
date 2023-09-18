@@ -1,7 +1,9 @@
 package org.yqj.source.cloud.feignlb.dto;
 
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Description:
@@ -11,6 +13,8 @@ import lombok.Data;
  * Email: yaoqijunmail@foxmail.com
  */
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class BaseResponse<T> {
 
     private boolean success;

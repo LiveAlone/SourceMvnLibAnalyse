@@ -12,10 +12,14 @@ spring:
         prefer-ip-address: true
       connect-string: localhost:2181
     openfeign:
+      circuitbreaker:
+        enabled: true
+        alphanumeric-ids:
+          enabled: true
       client:
         config:
           default:
             connectTimeout: 3000
             readTimeout: 500
             loggerLevel: full
-            retryer: feign.Retryer.Default
+#            retryer: feign.Retryer.Default

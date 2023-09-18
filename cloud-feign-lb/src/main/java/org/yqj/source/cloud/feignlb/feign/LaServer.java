@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.yqj.source.cloud.feignlb.dto.BaseRequest;
 import org.yqj.source.cloud.feignlb.dto.BaseResponse;
 
-@FeignClient(name = "feign-la", path = "/feign")
+@FeignClient(name = "feign-la", path = "/feign", fallback = LaServerCallback.class)
 public interface LaServer {
 
     @PostMapping(value = "/server", produces = MediaType.APPLICATION_JSON_VALUE)
@@ -22,4 +22,7 @@ public interface LaServer {
 
     @RequestMapping(value = "/timeout", method = RequestMethod.GET)
     BaseResponse<String> timeoutCall(@RequestParam("id") String id);
+
+    @RequestMapping(value = "/fail", method = RequestMethod.GET)
+    BaseResponse<String> fail(@RequestParam("id") String id);
 }
