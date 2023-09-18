@@ -1,4 +1,4 @@
-package org.yqj.source.resilience4j.examples;
+package org.yqj.source.resilience4j.examplesold;
 
 import io.github.resilience4j.bulkhead.Bulkhead;
 import io.github.resilience4j.bulkhead.BulkheadConfig;

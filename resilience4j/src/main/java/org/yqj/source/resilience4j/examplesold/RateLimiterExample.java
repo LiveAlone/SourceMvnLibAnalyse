@@ -1,4 +1,4 @@
-package org.yqj.source.resilience4j.examples;
+package org.yqj.source.resilience4j.examplesold;
 
 import io.github.resilience4j.ratelimiter.RateLimiter;
 import io.github.resilience4j.ratelimiter.RateLimiterConfig;
