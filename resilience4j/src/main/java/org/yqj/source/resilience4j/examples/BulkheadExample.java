@@ -1,4 +1,4 @@
-package org.yqj.source.resilience4j.examplesold;
+package org.yqj.source.resilience4j.examples;
 
 import io.github.resilience4j.bulkhead.Bulkhead;
 import io.github.resilience4j.bulkhead.BulkheadConfig;
@@ -21,9 +21,9 @@ import java.util.function.Function;
 public class BulkheadExample {
 
     public static void main(String[] args) throws InterruptedException {
-//        configExecution();
+        configExecution();
 
-        threadInterrupt();
+//        threadInterrupt();
     }
 
     public static void threadInterrupt() throws InterruptedException {
@@ -73,6 +73,7 @@ public class BulkheadExample {
         Function<String, String> methodDecorate = Bulkhead.decorateFunction(bulkhead, method);
 
         for (int i = 0; i < 10; i++) {
+            // 两个线程执行成功
             int index = i;
             new Thread(() -> {
                 String key = "currentThread" + index;
@@ -86,29 +87,5 @@ public class BulkheadExample {
                 }
             }).start();
         }
-    }
-
-    public static void base() {
-
-        BulkheadRegistry bulkheadRegistry = BulkheadRegistry.ofDefaults();
-
-        ThreadPoolBulkheadRegistry threadPoolBulkheadRegistry = ThreadPoolBulkheadRegistry.ofDefaults();
-
-        BulkheadConfig bulkheadConfig = BulkheadConfig.custom()
-                .maxConcurrentCalls(25)
-                .maxWaitDuration(Duration.ofMillis(200))
-                .build();
-        BulkheadRegistry registry = BulkheadRegistry.of(bulkheadConfig);
-        Bulkhead bulkheadWithDefaultConfig = registry.bulkhead("name1");
-        Bulkhead bulkheadWithCustomConfig = registry.bulkhead("name2", bulkheadConfig);
-
-//        ThreadPoolBulkheadConfig config = ThreadPoolBulkheadConfig.custom()
-//                .maxThreadPoolSize(10)
-//                .coreThreadPoolSize(2)
-//                .queueCapacity(20)
-//                .build();
-//        ThreadPoolBulkheadRegistry registry = ThreadPoolBulkheadRegistry.of(config);
-//        ThreadPoolBulkhead bulkheadWithDefaultConfig = registry.bulkhead("name1");
-//        ThreadPoolBulkhead bulkheadWithCustomConfig = registry.bulkhead("name2", config);
     }
 }
