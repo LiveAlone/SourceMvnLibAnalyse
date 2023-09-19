@@ -3,6 +3,7 @@ package org.yqj.source.resilience4j.examplesold;
 import io.github.resilience4j.ratelimiter.RateLimiter;
 import io.github.resilience4j.ratelimiter.RateLimiterConfig;
 import io.github.resilience4j.ratelimiter.RateLimiterRegistry;
+import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
