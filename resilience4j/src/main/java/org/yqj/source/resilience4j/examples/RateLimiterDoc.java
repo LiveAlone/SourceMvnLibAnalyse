@@ -8,6 +8,7 @@ import io.vavr.control.Try;
 import lombok.extern.slf4j.Slf4j;
 
 import java.time.Duration;
+import java.util.Date;
 import java.util.function.Supplier;
 
 /**
@@ -18,8 +19,29 @@ import java.util.function.Supplier;
  */
 @Slf4j
 public class RateLimiterDoc {
-    public static void main(String[] args) {
-        decorate();
+    public static void main(String[] args) throws Exception {
+//        decorate();
+
+        testBase();
+    }
+
+    public static void testBase() throws Exception {
+        RateLimiterConfig config = RateLimiterConfig.custom()
+                .limitRefreshPeriod(Duration.ofSeconds(1))
+                .limitForPeriod(10)
+                .timeoutDuration(Duration.ZERO)
+                .build();
+        RateLimiterRegistry rateLimiterRegistry = RateLimiterRegistry.of(config);
+        RateLimiter rateLimiterWithDefaultConfig = rateLimiterRegistry.rateLimiter("localRateLimit");
+        Supplier<String> restrictedCall = RateLimiter.decorateSupplier(rateLimiterWithDefaultConfig, () -> "SUCCESS");
+
+        while (true) {
+            log.info("current time stamp :{}", new Date());
+            Try.ofSupplier(restrictedCall)
+                    .onSuccess(s -> log.info("success execute :{}", s))
+                    .onFailure(e -> log.error("fail: ", e));
+            Thread.sleep(80);
+        }
     }
 
     public static void events() {
