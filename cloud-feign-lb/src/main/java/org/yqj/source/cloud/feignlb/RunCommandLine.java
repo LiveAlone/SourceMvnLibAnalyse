@@ -47,10 +47,10 @@ public class RunCommandLine implements CommandLineRunner {
 ////            log.info("command line runner is resp: {}", resp);
 //        }
 
-//        BaseResponse<String> response = laServer.timeoutCall(String.valueOf(1024));
-//        log.info("command line runner is resp: {}", response);
-
-        BaseResponse<String> response = laServer.fail(String.valueOf(1024));
+        BaseResponse<String> response = laServer.timeoutCall(String.valueOf(1024));
         log.info("command line runner is resp: {}", response);
+
+//        BaseResponse<String> response = laServer.fail(String.valueOf(1024));
+//        log.info("command line runner is resp: {}", response);
     }
 }

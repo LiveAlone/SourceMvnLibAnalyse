@@ -16,10 +16,20 @@ spring:
         enabled: true
         alphanumeric-ids:
           enabled: true
-      client:
-        config:
-          default:
-            connectTimeout: 3000
-            readTimeout: 500
-            loggerLevel: full
-#            retryer: feign.Retryer.Default
+#      client:
+#        config:
+#          default:
+#            connectTimeout: 3000
+#            readTimeout: 500
+#            loggerLevel: full
+##            retryer: feign.Retryer.Default
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      LaServertimeoutCallString:
+              minimumNumberOfCalls: 100
+  timelimiter:
+    configs:
+      LaServertimeoutCallString:
+              timeoutDuration: 200ms

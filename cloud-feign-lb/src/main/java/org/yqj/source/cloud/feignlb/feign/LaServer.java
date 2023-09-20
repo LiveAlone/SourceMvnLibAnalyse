@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.yqj.source.cloud.feignlb.dto.BaseRequest;
 import org.yqj.source.cloud.feignlb.dto.BaseResponse;
 
-@FeignClient(name = "feign-la", path = "/feign", fallback = LaServerCallback.class)
+@FeignClient(name = "feign-la", path = "/feign")
 public interface LaServer {
 
     @PostMapping(value = "/server", produces = MediaType.APPLICATION_JSON_VALUE)
