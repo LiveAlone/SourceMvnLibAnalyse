@@ -30,7 +30,7 @@
 <!--        <module>web</module>-->
 
         <!-- jdk basic -->
-        <module>basic</module>
+<!--        <module>basic</module>-->
 <!--        <module>pattern</module>-->
 <!--        <module>utils</module>-->
 <!--        <module>resilience4j</module>-->
@@ -43,8 +43,8 @@
 <!--        <module>actuator</module>-->
 
         <!-- spring cloud -->
-<!--        <module>cloud-feign-la</module>-->
-<!--        <module>cloud-feign-lb</module>-->
+        <module>cloud-feign-la</module>
+        <module>cloud-feign-lb</module>
 <!--        <module>cloud-config</module>-->
     </modules>
 
