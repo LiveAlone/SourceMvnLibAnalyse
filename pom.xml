@@ -32,8 +32,8 @@
         <!-- jdk basic -->
 <!--        <module>basic</module>-->
 <!--        <module>pattern</module>-->
-<!--        <module>utils</module>-->
-        <module>resilience4j</module>
+        <module>utils</module>
+<!--        <module>resilience4j</module>-->
 
 
         <!-- spring  -->
