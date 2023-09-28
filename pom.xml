@@ -34,7 +34,8 @@
 <!--        <module>pattern</module>-->
 <!--        <module>utils</module>-->
 <!--        <module>resilience4j</module>-->
-        <module>engine</module>
+<!--        <module>engine</module>-->
+        <module>lettuce</module>
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
