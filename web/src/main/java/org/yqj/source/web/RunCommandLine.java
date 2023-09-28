@@ -1,4 +1,4 @@
-package org.yqj.source.cloud;
+package org.yqj.source.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.CommandLineRunner;

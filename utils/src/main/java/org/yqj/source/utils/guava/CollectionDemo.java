@@ -1,4 +1,4 @@
-package org.yqj.source.utils.guava;
+package org.yqj.source.empty.guava;
 
 import com.google.common.collect.BiMap;
 import com.google.common.collect.ClassToInstanceMap;

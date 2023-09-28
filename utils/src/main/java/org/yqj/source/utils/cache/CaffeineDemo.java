@@ -1,4 +1,4 @@
-package org.yqj.source.utils.cache;
+package org.yqj.source.empty.cache;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;

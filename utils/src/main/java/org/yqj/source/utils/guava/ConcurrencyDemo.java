@@ -1,4 +1,4 @@
-package org.yqj.source.utils.guava;
+package org.yqj.source.empty.guava;
 
 import com.google.common.util.concurrent.FutureCallback;
 import com.google.common.util.concurrent.Futures;

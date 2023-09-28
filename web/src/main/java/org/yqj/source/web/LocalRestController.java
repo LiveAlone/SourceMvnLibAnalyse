@@ -1,4 +1,4 @@
-package org.yqj.source.cloud;
+package org.yqj.source.web;
 
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.extern.slf4j.Slf4j;
@@ -6,8 +6,8 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-import org.yqj.source.cloud.dto.AddressResponse;
-import org.yqj.source.cloud.dto.BaseResponse;
+import org.yqj.source.web.dto.AddressResponse;
+import org.yqj.source.web.dto.BaseResponse;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;

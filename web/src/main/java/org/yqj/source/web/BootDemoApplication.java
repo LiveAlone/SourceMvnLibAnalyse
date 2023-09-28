@@ -1,4 +1,4 @@
-package org.yqj.source.cloud;
+package org.yqj.source.web;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
