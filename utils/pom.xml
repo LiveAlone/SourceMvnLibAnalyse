@@ -14,6 +14,12 @@
     </parent>
 
     <dependencies>
+        <!-- apache pool -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-pool2</artifactId>
+        </dependency>
+
         <!-- cache -->
         <dependency>
             <groupId>com.github.ben-manes.caffeine</groupId>

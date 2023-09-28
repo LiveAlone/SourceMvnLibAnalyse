@@ -1,4 +1,4 @@
-package org.yqj.source.basic.pool;
+package org.yqj.source.utils.pool;
 
 import org.apache.commons.pool2.BasePooledObjectFactory;
 import org.apache.commons.pool2.PooledObject;

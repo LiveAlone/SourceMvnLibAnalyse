@@ -7,13 +7,22 @@
 
 ### Java 基础类库模块
 
-1. basic jdk基础类库内demo解析。
-2. Pattern-Design 设计模式Demo模块
-3. utils 常用工具集合
-  - 缓存 guavaCache, Caffeine支持内存缓存
+#### basic java基础类库
+  - basic 基础类库集合 
+  - aop 拦截实现不同方式 1. java原生代理 2. asm字节码修改 3. cglib代理类生成
+
+#### Pattern-Design 设计模式Demo模块
+
+#### utils 常用工具集合
+  - cache 缓存 guava，Caffeine
+  - guava 基础功能支持
+  - pool ApachePool池化工具类
 
 
 ### Spring Boot 应用模块
-1. sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
-2. sp-cache springCache缓存模块，redis, ehcache, guava, caffeine 等缓存模块支持。
-3. zk zookeeper 模块，基于curator的zookeeper客户端封装。
+
+#### sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
+
+#### sp-cache springCache缓存模块，redis, ehcache, guava, caffeine 等缓存模块支持。
+
+#### zk zookeeper 模块，基于curator的zookeeper客户端封装。
