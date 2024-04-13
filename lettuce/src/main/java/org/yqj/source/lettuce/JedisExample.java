@@ -16,7 +16,7 @@ public class JedisExample {
 
 //        bitBasicTest();
 
-        setTest();
+//        setTest();
 
         firstTest();
     }
