@@ -2,55 +2,37 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.yqj.source</groupId>
-    <artifactId>source-demo</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>pom</packaging>
-
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>2.2.4.RELEASE</version>
         <relativePath/>
     </parent>
+
+
+    <groupId>org.yqj.source</groupId>
+    <artifactId>oauth</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <properties>
         <project.encoding>UTF-8</project.encoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>17</java.version>
-        <maven.compiler.source>17</maven.compiler.source>
-        <maven.compiler.target>17</maven.compiler.target>
+        <java.version>1.8</java.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+
+        <spring.boot.version>2.2.4.RELEASE</spring.boot.version>
     </properties>
 
     <modules>
-        <!-- template -->
-<!--        <module>empty</module>-->
-<!--        <module>app</module>-->
-<!--        <module>web</module>-->
-
-        <!-- jdk basic -->
-<!--        <module>basic</module>-->
-<!--        <module>pattern</module>-->
-<!--        <module>utils</module>-->
-<!--        <module>resilience4j</module>-->
-<!--        <module>engine</module>-->
-<!--        <module>lettuce</module>-->
-<!--        <module>orm</module>-->
-        <module>doc</module>
-
-        <!-- spring  -->
-<!--        <module>sp-core</module>-->
-<!--        <module>sp-cache</module>-->
-<!--        <module>zk</module>-->
-<!--        <module>actuator</module>-->
-<!--        <module>security</module>-->
-<!--        <module>session</module>-->
-
-        <!-- spring cloud -->
-<!--        <module>cloud-feign-la</module>-->
-<!--        <module>cloud-feign-lb</module>-->
-<!--        <module>cloud-config</module>-->
+        <module>none</module>
+<!--        <module>resource-server</module>-->
+<!--        <module>password-credential</module>-->
+<!--        <module>code-credential</module>-->
+<!--        <module>implicit-credential</module>-->
+<!--        <module>client-credential</module>-->
     </modules>
 
     <dependencyManagement>
