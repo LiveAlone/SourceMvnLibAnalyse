@@ -1,0 +1,33 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.yqj.source</groupId>
+        <artifactId>source-demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>dal</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>
+        dal 数据访问层相关 demo
+    </description>
+
+    <modules>
+        <!-- 1 database 数据库相关支持模块 -->
+        <!-- spring jdbc 支持基础事务 -->
+        <module>trans</module>
+        <!-- orm 基于mybatis-plus 支持多数据源 -->
+        <module>orm</module>
+
+        <!-- 2 redis 数据相关支持模块 -->
+        <!-- jedis lettuce 相关示例 -->
+        <module>lettuce</module>
+        <module>redisson</module>
+
+    </modules>
+
+
+</project>
