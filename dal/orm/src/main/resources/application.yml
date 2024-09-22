@@ -1,6 +1,7 @@
 logging:
   level:
     root: info
+    org.yqj.source.orm.mapper: debug
 
 spring:
   datasource:
@@ -22,18 +23,19 @@ spring:
           type: com.alibaba.druid.pool.DruidDataSource
           username: root
           password: root
-    # Druid 自定已配置
-    druid:
-      # 过滤器配置
-      filter:
-        stat: # 配置 StatFilter ，对应文档 https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatFilter
-          log-slow-sql: true # 开启慢查询记录
-          slow-sql-millis: 5000 # 慢 SQL 的标准，单位：毫秒
-      # StatViewServlet 配置
-      stat-view-servlet: # 配置 StatViewServlet ，对应文档 https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatViewServlet%E9%85%8D%E7%BD%AE
-        enabled: true # 是否开启 StatViewServlet
-        login-username: test # 账号
-        login-password: test # 密码
+      # Druid 自定已配置
+      druid:
+        # 过滤器配置
+        filter:
+          stat: # 配置 StatFilter ，对应文档 https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatFilter
+            log-slow-sql: true # 开启慢查询记录
+            slow-sql-millis: 5000 # 慢 SQL 的标准，单位：毫秒
+        # StatViewServlet 配置
+        stat-view-servlet: # 配置 StatViewServlet ，对应文档 https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_StatViewServlet%E9%85%8D%E7%BD%AE
+          enabled: true # 是否开启 StatViewServlet
+          login-username: test # 账号
+          login-password: test # 密码
+        max-active: 77
 
 #    # 3 druid 多数据源
 #    orders:
@@ -86,7 +88,7 @@ spring:
 #        login-username: test # 账号
 #        login-password: test # 密码
 
-#    # 2 hikair 多数据源配置
+#    # 2 hikari 多数据源配置
 #    orders:
 #      driver-class-name: com.mysql.cj.jdbc.Driver
 #      url: jdbc:mysql://localhost:3306/orders?useUnicode=true&characterEncoding=utf-8&useSSL=false&serverTimezone=Asia/Shanghai&socketTimeout=3000

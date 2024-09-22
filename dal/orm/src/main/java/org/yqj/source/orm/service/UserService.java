@@ -7,9 +7,9 @@ import org.yqj.source.orm.mapper.User;
 public interface UserService extends IService<User> {
 
     @DS("users")
-    User getUserById(Long id);
+    User getUserByIdFromUsers(Long id);
 
     @DS("orders")
-    void insertUser(User user);
+    void insertUserToOrders(User user);
 
 }

@@ -11,3 +11,7 @@
 
 - session web 请求会话内容管理
 - oauth 基于spring security构建可用的oauth2.0认证服务, spring历史版本
+
+### 2024.09.11
+- dal 逻辑修改测试
+- tools, 封装常用工具类，简化业务代码

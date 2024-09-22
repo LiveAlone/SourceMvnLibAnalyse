@@ -16,12 +16,12 @@ import org.yqj.source.orm.mapper.UserMapper;
 public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements UserService {
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserByIdFromUsers(Long id) {
         return this.getBaseMapper().selectById(id);
     }
 
     @Override
-    public void insertUser(User user) {
+    public void insertUserToOrders(User user) {
         this.getBaseMapper().insert(user);
     }
 }

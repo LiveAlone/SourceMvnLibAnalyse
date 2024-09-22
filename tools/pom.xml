@@ -1,0 +1,27 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.yqj.source</groupId>
+        <artifactId>source-demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>tools</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>
+        tools 常用业务工具模块，简化业务开发，提高业务效率
+    </description>
+
+    <modules>
+        <!-- 1 common 通用模块 -->
+        <module>common</module>
+
+        <!-- 2 auth 三方平台 Oauth 登录集成 -->
+        <module>auth</module>
+    </modules>
+
+
+</project>

@@ -1,7 +1,7 @@
 package org.yqj.source.lettuce;
 
-import com.google.common.collect.ImmutableList;
-import lombok.extern.slf4j.Slf4j;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
 
 import java.util.List;
 
@@ -12,11 +12,11 @@ import java.util.List;
  * @date 2023/6/6
  * Email: yaoqijunmail@foxmail.com
  */
-@Slf4j
+@SpringBootApplication
 public class BootDemoApplication {
     public static void main(String[] args) {
-        List<Integer> ls = ImmutableList.of(1, 2);
-        log.debug("ls info is {}", ls);
-        log.info("starting boot demo application ...");
+        new SpringApplicationBuilder()
+                .sources(BootDemoApplication.class)
+                .run(args);
     }
 }
