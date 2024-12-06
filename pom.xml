@@ -31,10 +31,13 @@
 
         <!-- 数据访问层模块 -->
 <!--        <module>dal</module>-->
-        <module>tools</module>
 
-        <!-- jdk basic -->
-<!--        <module>basic</module>-->
+<!--        <module>tools</module>-->
+
+        <!-- java basic -->
+        <module>basic</module>
+
+        <!-- lib -->
 <!--        <module>pattern</module>-->
 <!--        <module>resilience4j</module>-->
 <!--        <module>engine</module>-->
