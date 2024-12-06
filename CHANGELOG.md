@@ -40,3 +40,5 @@ sdk版本依赖升级，lombok插件支持配置
 basic 模块分离
 - lang 语言语法模块
 - vm 虚拟机模块
+
+JvmInitParamsTest github 项目删除
