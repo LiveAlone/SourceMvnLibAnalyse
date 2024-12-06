@@ -15,3 +15,28 @@
 ### 2024.09.11
 - dal 逻辑修改测试
 - tools, 封装常用工具类，简化业务代码
+
+### 2024.12.06
+
+spring 版本升级
+<version>3.4.0</version>
+
+sdk版本依赖升级，lombok插件支持配置
+```xml
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <annotationProcessorPaths>
+                        <path>
+                            <groupId>org.projectlombok</groupId>
+                            <artifactId>lombok</artifactId>
+                        </path>
+                    </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+```
+
+basic 模块分离
+- lang 语言语法模块
+- vm 虚拟机模块

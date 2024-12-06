@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.0</version>
+        <version>3.4.0</version>
         <relativePath/>
     </parent>
 
@@ -30,7 +30,7 @@
 <!--        <module>web</module>-->
 
         <!-- 数据访问层模块 -->
-        <module>dal</module>
+<!--        <module>dal</module>-->
         <module>tools</module>
 
         <!-- jdk basic -->
