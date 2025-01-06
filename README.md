@@ -23,6 +23,7 @@
   - cache 缓存 guava，Caffeine
   - guava 基础功能支持
   - pool ApachePool池化工具类
+  - easy_excel excel 文档内容解析工具
 
 ### resilience4j 支持java熔断限流工具
 
@@ -30,9 +31,9 @@
   - alibaba QLExpress 基于QLExpress的规则引擎
 
 ### lettuce redis客户端
-  - redis redis客户端
+  - jedis redis客户端
   - lettuce lettuce客户端
-
+  - 
 
 
 ## Spring Boot 应用模块
