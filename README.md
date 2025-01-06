@@ -30,10 +30,11 @@
 ### engine 模版规则引擎
   - alibaba QLExpress 基于QLExpress的规则引擎
 
-### lettuce redis客户端
-  - jedis redis客户端
-  - lettuce lettuce客户端
-  - 
+
+## dal 数据持久化模块
+    - redis数据持久化 jedis lettuce redisson 等
+    - mybatis 数据持久化
+    - trans spring-trans 事务提交支持
 
 
 ## Spring Boot 应用模块
