@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.0</version>
+        <version>3.4.1</version>
         <relativePath/>
     </parent>
 
@@ -31,8 +31,7 @@
 
         <!-- 数据访问层模块 -->
 <!--        <module>dal</module>-->
-
-        <module>tools</module>
+<!--        <module>tools</module>-->
 
         <!-- java basic -->
 <!--        <module>basic</module>-->
@@ -46,6 +45,7 @@
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
+        <module>sp-webflux</module>
 <!--        <module>zk</module>-->
 <!--        <module>actuator</module>-->
 <!--        <module>security</module>-->
