@@ -19,8 +19,8 @@
         <!-- 1 common 通用模块 -->
         <module>common</module>
 
-        <!-- 2 auth 三方平台 Oauth 登录集成 -->
-        <module>auth</module>
+        <!-- 2 mapstruct 结构体映射 -->
+        <module>mapstruct</module>
     </modules>
 
 
