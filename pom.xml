@@ -35,7 +35,7 @@
 <!--        <module>tools</module>-->
 
         <!-- java basic -->
-        <module>basic</module>
+<!--        <module>basic</module>-->
 
         <!-- lib -->
 <!--        <module>pattern</module>-->
