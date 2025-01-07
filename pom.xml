@@ -31,6 +31,7 @@
 
         <!-- 数据访问层模块 -->
 <!--        <module>dal</module>-->
+
 <!--        <module>tools</module>-->
 
         <!-- java basic -->
@@ -41,11 +42,12 @@
 <!--        <module>resilience4j</module>-->
 <!--        <module>engine</module>-->
 <!--        <module>doc</module>-->
+        <module>sentinel</module>
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
-        <module>sp-webflux</module>
+<!--        <module>sp-webflux</module>-->
 <!--        <module>zk</module>-->
 <!--        <module>actuator</module>-->
 <!--        <module>security</module>-->

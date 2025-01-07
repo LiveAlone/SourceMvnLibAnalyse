@@ -27,6 +27,8 @@
 
 ### resilience4j 支持java熔断限流工具
 
+### sentinel-client 服务限流熔断工具
+
 ### engine 模版规则引擎
   - alibaba QLExpress 基于QLExpress的规则引擎
 
@@ -42,6 +44,8 @@
 ### sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
 
 ### sp-cache springCache缓存模块，redis, ehcache, guava, caffeine 等缓存模块支持。
+
+### sp-webflux springWebFlux模块，基于reactor的webflux模块支持。
 
 ### zk zookeeper 模块，基于curator的zookeeper客户端封装。
 
