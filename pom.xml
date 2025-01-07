@@ -42,7 +42,8 @@
 <!--        <module>resilience4j</module>-->
 <!--        <module>engine</module>-->
 <!--        <module>doc</module>-->
-        <module>sentinel</module>
+<!--        <module>sentinel</module>-->
+        <module>sw</module>
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
