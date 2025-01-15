@@ -25,7 +25,7 @@
 
     <modules>
         <!-- template -->
-<!--        <module>empty</module>-->
+        <module>empty</module>
 <!--        <module>app</module>-->
 <!--        <module>web</module>-->
 
@@ -43,7 +43,7 @@
 <!--        <module>engine</module>-->
 <!--        <module>doc</module>-->
 <!--        <module>sentinel</module>-->
-        <module>sw</module>
+<!--        <module>sw</module>-->
 
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
