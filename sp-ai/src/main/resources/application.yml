@@ -5,7 +5,7 @@ logging:
 spring:
   ai:
     moonshot:
-      api-key: sk-7gzbE2rQVj0jP581FMPfs7LUPF9cP94BOIrfjW8H53z6IN41
+      api-key: XXX
       chat:
         options:
           model: moonshot-v1-8k

@@ -12,7 +12,7 @@ ZhiPu AI
 ```shell
 curl https://api.moonshot.cn/v1/chat/completions \
     -H "Content-Type: application/json" \
-    -H "Authorization: Bearer sk-7gzbE2rQVj0jP581FMPfs7LUPF9cP94BOIrfjW8H53z6IN41" \
+    -H "Authorization: Bearer XXX" \
     -d '{
         "model": "moonshot-v1-8k",
         "messages": [
