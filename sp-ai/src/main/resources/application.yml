@@ -4,10 +4,9 @@ logging:
 
 spring:
   ai:
-    moonshot:
-      api-key: XXX
+    zhipuai:
+      api-key: 73d4a4df53cb4e04a3bc41b82aac32d9.FumlME4hjyBF9Mhw
       chat:
         options:
-          model: moonshot-v1-8k
+          model: GLM-3-Turbo
           temperature: 0.7
-

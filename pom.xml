@@ -48,7 +48,8 @@
         <!-- spring  -->
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
-<!--        <module>sp-webflux</module>-->
+        <!--   todo spring web build     -->
+        <module>sp-webflux</module>
 <!--        <module>zk</module>-->
 <!--        <module>actuator</module>-->
 <!--        <module>security</module>-->

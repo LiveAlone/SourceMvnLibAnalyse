@@ -1,14 +1,21 @@
 package org.yqj.source.ai;
 
 import jakarta.annotation.Resource;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.chat.prompt.Prompt;
-import org.springframework.ai.moonshot.MoonshotChatModel;
-import org.springframework.ai.moonshot.MoonshotChatOptions;
-import org.springframework.ai.moonshot.api.MoonshotApi;
+import org.springframework.ai.converter.BeanOutputConverter;
+import org.springframework.ai.zhipuai.ZhiPuAiChatModel;
 import org.springframework.boot.CommandLineRunner;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
+import reactor.core.publisher.Flux;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Description:
@@ -22,32 +29,58 @@ import org.springframework.stereotype.Component;
 public class RunCommandLine implements CommandLineRunner {
 
     @Resource
-    private MoonshotChatModel chatModel;
+    private ZhiPuAiChatModel zhiPuAiChatModel;
 
     @Override
     public void run(String... args) throws Exception {
-        try {
-            // 同步调用返回结果内容
-            ChatResponse response = chatModel.call(
-                    new Prompt(
-                            "列举中国的五个城市名称",
-                            MoonshotChatOptions.builder()
-                                    .model(MoonshotApi.ChatModel.MOONSHOT_V1_8K.getValue())
-                                    .temperature(0.5)
-                                    .build()
-                    ));
-            log.info("ai chat result is response: {}", response.getResult().getOutput().getText());
+        ChatClient chatClient = ChatClient.create(zhiPuAiChatModel);
+        String content = chatClient.prompt("hello").call().content();
+        log.info("content: {}", content);
 
-            // Steam 流式调用, 顺序返回结果内容
-//            chatModel.stream(new Prompt("Generate the names of 5 famous pirates.",
-//                    MoonshotChatOptions.builder()
-//                            .model(MoonshotApi.ChatModel.MOONSHOT_V1_8K.getValue())
-//                            .temperature(0.5).build()
-//            )).subscribe(response -> {
-//                log.info("ai chat result is response: {}", response.getResult().getOutput().getText());
-//            });
-        } catch (Exception e) {
-            log.error("ai chat error is happen", e);
-        }
+//        formatResponse(chatClient);
+
+//        Flux<String> output = chatClient.prompt()
+//                .user("Tell me a joke")
+//                .stream().content();
+//        output.subscribe(System.out::print);
+
+    }
+
+    private void formatResponse(ChatClient chatClient) {
+        // AI 通过entity 自动格式化 json 数据
+//        ActorFilms actorFilms = chatClient.prompt()
+//                .user("Generate the filmography for a random actor.")
+//                .call()
+//                .entity(ActorFilms.class);
+//        log.info("actorFilms: {}", actorFilms);
+
+//        List<ActorFilms> actorFilms = chatClient.prompt()
+//                .user("Generate the filmography of 5 movies for Tom Hanks and Bill Murray.")
+//                .call()
+//                .entity(new ParameterizedTypeReference<List<ActorFilms>>() {});
+//        log.info("actorFilms: {}", actorFilms);
+
+        // struct format
+//        var converter = new BeanOutputConverter<>(new ParameterizedTypeReference<List<ActorFilms>>() {});
+//        log.info("format response :{}", converter.getFormat());
+//        Flux<String> flux = chatClient.prompt()
+//                .user(u -> u.text("""
+//                        Generate the filmography for a random actor.
+//                        {format}
+//                      """).param("format", converter.getFormat()))
+//                .stream()
+//                .content();
+//        String content = flux.collectList().block().stream().collect(Collectors.joining());
+//        log.info("content: {}", content);
+//        List<ActorFilms> actorFilms = converter.convert(content);
+//        log.info("actorFilms: {}", actorFilms);
+    }
+
+    @Data
+    @AllArgsConstructor
+    @NoArgsConstructor
+    public static final class ActorFilms {
+        private String actor;
+        private List<String> movies;
     }
 }

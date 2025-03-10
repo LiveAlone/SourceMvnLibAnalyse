@@ -14,7 +14,6 @@ import org.springframework.boot.builder.SpringApplicationBuilder;
 public class BootDemoApplication {
     public static void main(String[] args) {
         new SpringApplicationBuilder()
-                .banner(new DemoBanner())
                 .sources(BootDemoApplication.class)
                 .run(args);
     }
