@@ -1,20 +1,16 @@
-package org.yqj.source.webflux.reactor;
+package org.yqj.source.reactor.core;
 
 import lombok.extern.slf4j.Slf4j;
 import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
-import reactor.core.publisher.ConnectableFlux;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
-import reactor.core.publisher.Hooks;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
-import reactor.core.publisher.UnicastProcessor;
 import reactor.core.scheduler.Scheduler;
 import reactor.core.scheduler.Schedulers;
 
 import java.time.Duration;
-import java.util.Arrays;
 
 /**
  * Description:
@@ -24,10 +20,9 @@ import java.util.Arrays;
  * Email: yaoqijunmail@foxmail.com
  */
 @Slf4j
-public class DocDemoMain {
+public class Core {
 
     public static void main(String[] args) {
-
 //        subscribeMethodVoid();
 
 //        baseSubscribeOutput();
@@ -40,7 +35,7 @@ public class DocDemoMain {
 
 //        publishOnTest();
 
-//        subscribeOnTest();
+        subscribeOnTest();
 
 //        errorHandlerCondition();
 
@@ -57,7 +52,7 @@ public class DocDemoMain {
 
 //        groupMapping();
 
-        contextTestCondition();
+//        contextTestCondition();
     }
 
     private static void contextTestCondition() {
@@ -238,23 +233,26 @@ public class DocDemoMain {
      * 消费异常重新订阅
      */
     public static void retryHandler() {
-        Flux.interval(Duration.ofMillis(1000))
-                .map(s -> {
-                    log.info("current tick is {}", s);
-                    if (s < 3) {
-                        return "tick " + s;
-                    }
-                    throw new RuntimeException("boom");
-                })
-                .retry(2) // 重试2次
-                .elapsed()
-                .subscribe(System.out::println, System.out::println);
+//        Flux.interval(Duration.ofMillis(1000))
+//                .map(s -> {
+//                    log.info("current tick is {}", s);
+//                    if (s < 3) {
+//                        return "tick " + s;
+//                    }
+//                    throw new RuntimeException("boom");
+//                })
+//                .retry(2) // 重试2次
+//                .elapsed()
+//                .subscribe(System.out::println, System.out::println);
+//
+//        try {
+//            Thread.sleep(60000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
 
-        try {
-            Thread.sleep(60000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
+        Flux.interval(Duration.ofMillis(300), Schedulers.newSingle("test"))
+                .elapsed().subscribe(v -> log.info("current thread is :{} current value is {}", Thread.currentThread().getName(), v));
     }
 
     public static void errorHandlerCondition() {
@@ -306,8 +304,8 @@ public class DocDemoMain {
         final Flux<String> flux = Flux
                 .range(1, 1000)
                 .map(i -> {
-                    System.out.println("map1 current thread is " + Thread.currentThread().getName());
-                    return i + 10;
+                    log.info("map1 current thread is :{} current value is {}", Thread.currentThread().getName(), i);
+                    return i;
                 })
                 .subscribeOn(s)
                 .map(i -> {
@@ -316,13 +314,15 @@ public class DocDemoMain {
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("map2 current thread is " + Thread.currentThread().getName());
+                    log.info("map2 current thread is :{} current value is {}", Thread.currentThread().getName(), i);
                     return "value is " + i;
                 });
 
         for (int i = 0; i < 4; i++) {
             flux.subscribe(System.out::println);
         }
+
+        s.dispose();
     }
 
     /**
@@ -441,6 +441,6 @@ public class DocDemoMain {
 //                .subscribe(System.out::println, System.out::println, () -> System.out.println("complete"));
 
         // single value 推送
-        Mono.just(100).subscribe(System.out::println);
+        Mono.just(100).subscribe(v -> log.info("current value is {}", v));
     }
 }
