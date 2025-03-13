@@ -25,7 +25,16 @@ public class LocalTcpServer {
     public static void main(String[] args) {
 //        appInit();
 
-        handlerMessage();
+//        handlerMessage();
+
+        createServer();
+    }
+
+    public static void createServer() {
+        DisposableServer server = TcpServer.create()
+                .handle((inbound, outbound) -> outbound.sendString(Mono.just("hello")))
+                .host("127.0.0.1").port(8080).bindNow();
+        server.onDispose().block();
     }
 
     public static void metricTrace() {
@@ -135,14 +144,14 @@ public class LocalTcpServer {
 //        server.onDispose().block();
 
         // 3 socket domain 绑定
-        DisposableServer server =
-                TcpServer.create()
-                        // The configuration below is available only when Epoll/KQueue transport is used
-                        .bindAddress(() -> new DomainSocketAddress("/tmp/test.sock"))
-                        // The configuration below is available only when NIO transport is used with Java 17+
-                        //.bindAddress(() -> UnixDomainSocketAddress.of("/tmp/test.sock"))
-                        .bindNow();
-        server.onDispose()
-                .block();
+//        DisposableServer server =
+//                TcpServer.create()
+//                        // The configuration below is available only when Epoll/KQueue transport is used
+//                        .bindAddress(() -> new DomainSocketAddress("/tmp/test.sock"))
+//                        // The configuration below is available only when NIO transport is used with Java 17+
+//                        //.bindAddress(() -> UnixDomainSocketAddress.of("/tmp/test.sock"))
+//                        .bindNow();
+//        server.onDispose()
+//                .block();
     }
 }
