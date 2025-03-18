@@ -26,6 +26,14 @@
     </dependencyManagement>
 
     <dependencies>
+
+<!--        <dependency>-->
+<!--            <groupId>io.projectreactor</groupId>-->
+<!--            <artifactId>reactor-tools</artifactId>-->
+<!--&lt;!&ndash;            <classifier>original</classifier>&ndash;&gt;-->
+<!--&lt;!&ndash;            <scope>runtime</scope>&ndash;&gt;-->
+<!--        </dependency>-->
+
         <!-- reactor -->
         <dependency>
             <groupId>io.projectreactor</groupId>
@@ -90,6 +98,18 @@
                             <version>${lombok.version}</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+
+            <plugin>
+                <groupId>net.bytebuddy</groupId>
+                <artifactId>byte-buddy-maven-plugin</artifactId>
+                <configuration>
+                    <transformations>
+                        <transformation>
+                            <plugin>reactor.tools.agent.ReactorDebugByteBuddyPlugin</plugin>
+                        </transformation>
+                    </transformations>
                 </configuration>
             </plugin>
         </plugins>

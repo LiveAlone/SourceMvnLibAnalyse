@@ -5,6 +5,7 @@ import org.reactivestreams.Subscription;
 import reactor.core.publisher.BaseSubscriber;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.FluxSink;
+import reactor.core.publisher.Hooks;
 import reactor.core.publisher.Mono;
 import reactor.core.publisher.Sinks;
 import reactor.core.scheduler.Scheduler;
@@ -35,7 +36,7 @@ public class Core {
 
 //        publishOnTest();
 
-        subscribeOnTest();
+//        subscribeOnTest();
 
 //        errorHandlerCondition();
 
@@ -53,6 +54,57 @@ public class Core {
 //        groupMapping();
 
 //        contextTestCondition();
+
+        // idea 默认debug 模式，打印flux 堆栈信息
+//        onOperatorDebug();
+
+        sinksDemo();
+    }
+
+    private static void sinksDemo() {
+        Sinks.Many<Integer> replaySink =
+//                Sinks.many().replay().all();
+//                Sinks.many().multicast().onBackpressureBuffer();
+                Sinks.many().unicast().onBackpressureBuffer();
+
+        replaySink.emitNext(66, Sinks.EmitFailureHandler.FAIL_FAST);
+        replaySink.emitNext(77, Sinks.EmitFailureHandler.FAIL_FAST);
+
+        Flux<Integer> flux = replaySink.asFlux();
+        flux.subscribe(data -> System.out.println("Subscriber 1: " + data));
+//        flux.subscribe(data -> System.out.println("Subscriber 2: " + data));
+
+        replaySink.emitNext(1, Sinks.EmitFailureHandler.FAIL_FAST);
+        replaySink.emitNext(2, Sinks.EmitFailureHandler.FAIL_FAST);
+        replaySink.emitNext(3, Sinks.EmitFailureHandler.busyLooping(Duration.ofSeconds(2)));
+        Sinks.EmitResult result = replaySink.tryEmitNext(4);
+
+        Sinks.unsafe().many();
+    }
+
+    private static void onOperatorDebug() {
+        // Enable assembly tracing
+//        Hooks.resetOnOperatorDebug();
+
+        // Create a Flux with an error
+        Flux<String> flux = Flux.just("A", "B", "C")
+                .map(value -> {
+                    if ("B".equals(value)) {
+                        throw new RuntimeException("Test error at value: " + value);
+                    }
+                    return value;
+                });
+
+        // Subscribe to the Flux and print the elements
+        flux.subscribe(
+                System.out::println,
+                error -> {
+                    System.err.println("Error: " + error);
+                    error.printStackTrace();
+                },
+                () -> System.out.println("Completed")
+        );
+
     }
 
     private static void contextTestCondition() {
@@ -277,7 +329,7 @@ public class Core {
 //                    System.out.println("getting error " + error.getMessage());
 //                    return Flux.just(666);
 //                }).subscribe(System.out::println, Throwable::printStackTrace);
-//
+
 //        Flux.just(1, 2, 3, 4, 5, 0, 6, 7, 9)
 //                .map(i -> i * 2)
 //                .map(i -> 100 / i)
@@ -302,7 +354,7 @@ public class Core {
         Scheduler s = Schedulers.newParallel("parallel-scheduler", 4);
 
         final Flux<String> flux = Flux
-                .range(1, 1000)
+                .range(1, 10)
                 .map(i -> {
                     log.info("map1 current thread is :{} current value is {}", Thread.currentThread().getName(), i);
                     return i;
@@ -318,9 +370,12 @@ public class Core {
                     return "value is " + i;
                 });
 
-        for (int i = 0; i < 4; i++) {
-            flux.subscribe(System.out::println);
-        }
+        flux.subscribe(System.out::println);
+
+//        for (int i = 0; i < 4; i++) {
+//            flux.subscribe(System.out::println);
+//            new Thread(() -> flux.subscribe(System.out::println), String.format("single_test_push_on_thread" + i)).start();
+//        }
 
         s.dispose();
     }
@@ -330,20 +385,20 @@ public class Core {
      */
     public static void publishOnTest() {
         // 并行线程执行
-//        Scheduler s = Schedulers.newParallel("parallel-scheduler", 4);
+        Scheduler s = Schedulers.newParallel("parallel-scheduler", 4);
 //        Scheduler s = Schedulers.immediate(); // 当前线程执行
 //        Scheduler s = Schedulers.newSingle("single_new_test"); // 单线程执行
 //        Scheduler s = Schedulers.newElastic("elastic_new");
-        Scheduler s = Schedulers.newBoundedElastic(10, 10, "bounded_elastic");
+//        Scheduler s = Schedulers.newBoundedElastic(10, 10, "bounded_elastic");
 
         final Flux<String> flux = Flux
                 .range(1, 10)
                 .map(i -> {
-                    int value = i * 10;
-                    log.info("map1 current thread is {} value is {}", Thread.currentThread().getName(), value);
-                    return value;
+                    log.info("map1 current thread is {} value is {}", Thread.currentThread().getName(), i);
+                    return i;
                 })
-                .publishOn(s)
+//                .publishOn(s)
+                .publishOn(s, 1)
                 .map(i -> {
                     log.info("map2 current thread is {} value is {}", Thread.currentThread().getName(), i);
                     try {
@@ -354,10 +409,12 @@ public class Core {
                     return "value " + i;
                 });
 
+        flux.subscribe(System.out::println);
+
         // 多线程并行发射消息
-        for (int i = 0; i < 4; i++) {
-            new Thread(() -> flux.subscribe(System.out::println), String.format("single_test_push_on_thread" + i)).start();
-        }
+//        for (int i = 0; i < 4; i++) {
+//            new Thread(() -> flux.subscribe(System.out::println), String.format("single_test_push_on_thread" + i)).start();
+//        }
     }
 
     /**
@@ -431,8 +488,8 @@ public class Core {
 
     public static void subscribeMethodVoid() {
         // FluxRange 循环Loop 推送消费Event
-//        Flux.range(100, 10)
-//                .subscribe(System.out::println);
+        Flux.range(100, 10)
+                .subscribe(System.out::println);
 
         // map filter 完成封装
 //        Flux.range(1, 100)
@@ -441,6 +498,6 @@ public class Core {
 //                .subscribe(System.out::println, System.out::println, () -> System.out.println("complete"));
 
         // single value 推送
-        Mono.just(100).subscribe(v -> log.info("current value is {}", v));
+//        Mono.just(100).subscribe(v -> log.info("current value is {}", v));
     }
 }
