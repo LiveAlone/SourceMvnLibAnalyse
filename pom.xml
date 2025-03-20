@@ -50,12 +50,12 @@
 <!--        <module>sp-core</module>-->
 <!--        <module>sp-cache</module>-->
         <!--   todo spring web build     -->
-        <module>sp-webflux</module>
+<!--        <module>sp-webflux</module>-->
 <!--        <module>zk</module>-->
 <!--        <module>actuator</module>-->
 <!--        <module>security</module>-->
 <!--        <module>session</module>-->
-<!--        <module>sp-ai</module>-->
+        <module>sp-ai</module>
 
         <!-- spring cloud -->
 <!--        <module>cloud-feign-la</module>-->
