@@ -1,5 +1,6 @@
 package org.yqj.source.webflux;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.http.MediaType;
@@ -19,6 +20,7 @@ import reactor.core.publisher.Mono;
  * @author yaoqijun on 2017-11-05.
  */
 @RestController
+@Slf4j
 public class WelcomeController {
 
     @Autowired
@@ -28,13 +30,14 @@ public class WelcomeController {
     @RequestMapping(value = "/", method = RequestMethod.GET, produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
     public String indexPage(){
+        log.info("current thread is :{}", Thread.currentThread().getName());
         return "this is test index paging info";
     }
 
     @Bean
     public RouterFunction<ServerResponse> monoEchoFunction() {
         return RouterFunctions.route(RequestPredicates.GET("/echo"),
-                request -> ServerResponse.ok().body(Mono.just("helloWorld"), String.class));
+                request -> ServerResponse.ok().body(Mono.just(Thread.currentThread().getName()), String.class));
     }
 
     @Bean

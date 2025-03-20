@@ -23,11 +23,11 @@ import java.util.concurrent.TimeUnit;
 public class TcpClientDemo {
     public static void main(String[] args) {
 
-        tcpConfig();
+//        tcpConfig();
 
 //        lifeCycle();
 
-//        dataReadWrite();
+        dataReadWrite();
 
 //        createClient();
     }
@@ -128,13 +128,11 @@ public class TcpClientDemo {
 //        connection.onDispose().block();
 
         // 4 阻塞式读取数据
-//        Connection connection = TcpClient.create()
-//                .host("localhost").port(8080)
-//                .connectNow();
-//        connection.inbound().receive().asString().subscribe(v -> {
-//            log.info("received: {}", v);
-//        });
-//        connection.onDispose().block();
+        Connection connection = TcpClient.create().host("localhost").port(8080).connectNow();
+        connection.inbound().receive().asString().subscribe(v -> {
+            log.info("received: {} current thread is :{}", v, Thread.currentThread().getName());
+        });
+        connection.onDispose().block();
     }
 
     private static void createClient() {

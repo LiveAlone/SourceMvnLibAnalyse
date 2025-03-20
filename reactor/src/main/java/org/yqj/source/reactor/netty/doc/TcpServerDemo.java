@@ -24,13 +24,25 @@ public class TcpServerDemo {
 
     public static void main(String[] args) {
 
-        tcpConfig();
+//        tcpConfig();
 
 //        lifeCycle();
 
 //        dataSendRead();
 
 //        createServer();
+
+        LoopResources loop = LoopResources.create("event-loop", 1, 4, true);
+        DisposableServer server = TcpServer.create()
+                .port(8080)
+                .runOn(loop)
+                .handle((inbound, outbound) -> {
+                    String resp = String.format("Hello, %s!", new Date());
+                    log.info("resp is {} current thread is: {}", resp, Thread.currentThread().getName());
+                    return outbound.sendString(Mono.just(resp));
+                })
+                .bindNow();
+        server.onDispose().block();
     }
 
     private static void tcpConfig() {
@@ -103,10 +115,10 @@ public class TcpServerDemo {
 
         // 2 链接返回数据
         DisposableServer server = TcpServer.create()
-                .host("localhost").port(8080)
+                .port(8080)
                 .handle((inbound, outbound) -> {
-                    String resp = String.format("Hello, %s!", new Date().toString());
-                    log.info("resp is {}", resp);
+                    String resp = String.format("Hello, %s!", new Date());
+                    log.info("resp is {} current thread is: {}", resp, Thread.currentThread().getName());
                     return outbound.sendString(Mono.just(resp));
                 })
                 .bindNow();

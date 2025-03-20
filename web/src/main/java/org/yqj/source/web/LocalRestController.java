@@ -29,6 +29,7 @@ public class LocalRestController {
         request.getParameterMap().forEach((key, value) -> {
             log.info("request params gain key:{}, value:{}", key, Arrays.asList(value));
         });
+        log.info("current thread is :{}", Thread.currentThread().getName());
         return BaseResponse.successResponse("success");
     }
 
