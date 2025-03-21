@@ -1,21 +1,14 @@
 package org.yqj.source.ai;
 
-import jakarta.annotation.Resource;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ai.chat.client.ChatClient;
-import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.ai.converter.BeanOutputConverter;
-import org.springframework.ai.zhipuai.ZhiPuAiChatModel;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Component;
-import reactor.core.publisher.Flux;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 /**
  * Description:
@@ -28,14 +21,14 @@ import java.util.stream.Collectors;
 @Slf4j
 public class RunCommandLine implements CommandLineRunner {
 
-    @Resource
-    private ZhiPuAiChatModel zhiPuAiChatModel;
+//    @Resource
+//    private ZhiPuAiChatModel zhiPuAiChatModel;
 
     @Override
     public void run(String... args) throws Exception {
-        ChatClient chatClient = ChatClient.create(zhiPuAiChatModel);
-        String content = chatClient.prompt("hello").call().content();
-        log.info("content: {}", content);
+//        ChatClient chatClient = ChatClient.create(zhiPuAiChatModel);
+//        String content = chatClient.prompt("hello").call().content();
+//        log.info("content: {}", content);
 
 //        formatResponse(chatClient);
 
