@@ -16,7 +16,7 @@ import java.util.Map;
  * Date: 2025/3/24 15:28
  * Description:
  */
-@Component
+//@Component
 @Slf4j
 public class StructOutput implements CommandLineRunner {
 
