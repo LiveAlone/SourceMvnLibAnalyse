@@ -55,7 +55,7 @@
 <!--        <module>actuator</module>-->
 <!--        <module>security</module>-->
 <!--        <module>session</module>-->
-        <module>sp-ai</module>
+<!--        <module>sp-ai</module>-->
 
         <!-- spring cloud -->
 <!--        <module>cloud-feign-la</module>-->
