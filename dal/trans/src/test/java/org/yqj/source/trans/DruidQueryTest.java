@@ -16,7 +16,7 @@ import java.sql.Statement;
 @Slf4j
 public class DruidQueryTest {
 
-    @Test
+//    @Test
     public void testQuery() {
         DruidDataSource dataSource = new DruidDataSource();
         dataSource.setUrl("jdbc:mysql://localhost:3306/test");

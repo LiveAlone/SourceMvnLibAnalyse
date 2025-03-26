@@ -18,14 +18,14 @@
     <modules>
         <!-- 1 database 数据库相关支持模块 -->
         <!-- spring jdbc 支持基础事务 -->
-        <module>trans</module>
+<!--        <module>trans</module>-->
         <!-- orm 基于mybatis-plus 支持多数据源 -->
-        <module>orm</module>
+<!--        <module>orm</module>-->
 
         <!-- 2 redis 数据相关支持模块 -->
         <!-- jedis lettuce 相关示例 -->
-        <module>lettuce</module>
-        <module>redisson</module>
+<!--        <module>lettuce</module>-->
+<!--        <module>redisson</module>-->
 
     </modules>
 

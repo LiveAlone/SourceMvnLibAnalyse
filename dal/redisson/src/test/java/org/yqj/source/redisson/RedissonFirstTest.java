@@ -17,7 +17,7 @@ import org.redisson.config.Config;
  */
 @Slf4j
 public class RedissonFirstTest {
-    @Test
+//    @Test
     public void testQuery() {
         // 1. Create config object
         Config config = new Config();

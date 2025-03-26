@@ -14,7 +14,7 @@ import redis.clients.jedis.Jedis;
 @Slf4j
 public class JedisConnectTest {
 
-    @Test
+//    @Test
     public void firstTest() {
         Jedis jedis = new Jedis("localhost", 6379);
         for (int i = 0; i < 100; i++) {
@@ -26,7 +26,7 @@ public class JedisConnectTest {
         System.out.println(jedis.zrank("testSet", "0"));
     }
 
-    @Test
+//    @Test
     public void setTest() {
         Jedis jedis = new Jedis("localhost", 6379);
 
@@ -39,7 +39,7 @@ public class JedisConnectTest {
         System.out.println(result);
     }
 
-    @Test
+//    @Test
     public void bitBasicTest() {
         String key = "bitNameKey";
         Jedis jedis = new Jedis("localhost", 6379);

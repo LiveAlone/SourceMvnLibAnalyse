@@ -1,0 +1,39 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.yqj.source</groupId>
+        <artifactId>source-demo</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
+    <artifactId>lib</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>pom</packaging>
+    <description>
+        lib 简单开源模块
+    </description>
+
+    <modules>
+        <!-- zookeeper demo -->
+<!--        <module>zk</module>-->
+
+        <!-- res 轻量熔断限流工具 -->
+<!--        <module>resilience4j</module>-->
+        <!-- 规则引擎 QLExpress -->
+<!--        <module>engine</module>-->
+
+        <!-- spring api 文档项目支持 -->
+<!--        <module>doc</module>-->
+        <!-- sentinel alibaba 熔断限流支持 -->
+<!--        <module>sentinel</module>-->
+        <!-- sky walking 分布式链路追踪  -->
+<!--        <module>sw</module>-->
+        <!-- reactor 响应式编程支持 -->
+<!--        <module>reactor</module>-->
+
+    </modules>
+
+
+</project>

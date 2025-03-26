@@ -18,7 +18,7 @@ import java.util.Collections;
 @Slf4j
 public class DalCodeGenerate {
 
-    @Test
+//    @Test
     public void generateCode() {
         log.info("start main auto generate");
         String url = "jdbc:mysql://127.0.0.1:3306/orders?useSSL=false&useUnicode=true&characterEncoding=UTF-8&remarks=true&useInformationSchema=true";

@@ -10,7 +10,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.4.2</version>
+        <version>3.4.4</version>
         <relativePath/>
     </parent>
 
@@ -32,35 +32,23 @@
         <!-- 数据访问层模块 -->
 <!--        <module>dal</module>-->
 
+        <!-- java jvm 基础demo  -->
+<!--        <module>basic</module>-->
+        <!-- 设计模式 -->
+<!--        <module>pattern</module>-->
+
+        <!-- 工具类模块 类似 Hutools -->
 <!--        <module>tools</module>-->
 
-        <!-- java basic -->
-<!--        <module>basic</module>-->
+<!--        <module>sp</module>-->
 
-        <!-- lib -->
-<!--        <module>pattern</module>-->
-<!--        <module>resilience4j</module>-->
-<!--        <module>engine</module>-->
-<!--        <module>doc</module>-->
-<!--        <module>sentinel</module>-->
-<!--        <module>sw</module>-->
-<!--        <module>reactor</module>-->
-
-        <!-- spring  -->
-<!--        <module>sp-core</module>-->
-<!--        <module>sp-cache</module>-->
-        <!--   todo spring web build     -->
-<!--        <module>sp-webflux</module>-->
-<!--        <module>zk</module>-->
-<!--        <module>actuator</module>-->
-<!--        <module>security</module>-->
-<!--        <module>session</module>-->
-<!--        <module>sp-ai</module>-->
+        <!-- lib 开源项目模块 -->
+        <!-- 1 通用开源模块 -->
+<!--        <module>lib</module>-->
 
         <!-- spring cloud -->
-<!--        <module>cloud-feign-la</module>-->
-<!--        <module>cloud-feign-lb</module>-->
-<!--        <module>cloud-config</module>-->
+<!--        <module>sp-cloud</module>-->
+
     </modules>
 
     <dependencyManagement>

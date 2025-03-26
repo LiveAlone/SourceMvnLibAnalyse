@@ -21,7 +21,7 @@ import java.util.Map;
 @Slf4j
 public class HikariCPQueryTest {
 
-    @Test
+//    @Test
     public void testQuery() {
         System.setProperty("com.zaxxer.hikari.blockUntilFilled", "true");
 

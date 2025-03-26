@@ -19,7 +19,7 @@ import java.util.concurrent.ThreadLocalRandom;
 @Slf4j
 public class LettuceConnectTest {
 
-    @Test
+//    @Test
     public void pfCountRate() {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> stringStringStatefulRedisConnection = redisClient.connect();
@@ -37,7 +37,7 @@ public class LettuceConnectTest {
         System.out.println("total count 10000, diff count " + diff + " query count : " + totalCount);
     }
 
-    @Test
+//    @Test
     public void keysScan() throws Exception {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> stringStringStatefulRedisConnection = redisClient.connect();
@@ -49,7 +49,7 @@ public class LettuceConnectTest {
         });
     }
 
-    @Test
+//    @Test
     public void getRedisKey() throws Exception {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> stringStringStatefulRedisConnection = redisClient.connect();
@@ -66,7 +66,7 @@ public class LettuceConnectTest {
         redisClient.shutdown();
     }
 
-    @Test
+//    @Test
     public void getKeyReactiveTask() throws Exception {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> connection = redisClient.connect();
@@ -98,7 +98,7 @@ public class LettuceConnectTest {
         redisClient.shutdown();
     }
 
-    @Test
+//    @Test
     public void getRunTask() throws Exception {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> connection = redisClient.connect();
@@ -114,7 +114,7 @@ public class LettuceConnectTest {
         redisClient.shutdown();
     }
 
-    @Test
+//    @Test
     public void readWriteExample() {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> connection = redisClient.connect();
@@ -125,7 +125,7 @@ public class LettuceConnectTest {
         redisClient.shutdown();
     }
 
-    @Test
+//    @Test
     public void testPingPongRedis() {
         RedisClient redisClient = RedisClient.create("redis://localhost/0");
         StatefulRedisConnection<String, String> connection = redisClient.connect();
