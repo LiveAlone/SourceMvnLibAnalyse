@@ -43,19 +43,13 @@
 ## Spring Boot 应用模块
 
 ### sp-core springCore核心模块，IOC, AOP, BOOT 启动过程。
-
 ### sp-cache springCache缓存模块，redis, ehcache, guava, caffeine 等缓存模块支持。
-
 ### sp-webflux springWebFlux模块，基于reactor的webflux模块支持。
-
 ### zk zookeeper 模块，基于curator的zookeeper客户端封装。
-
 ### actuator spring应用监控工具
 
 
 
 ## Spring Cloud 云部署模块
-
 ### cloud-feign-la, cloud-feign-lb feign支持服务和调用端
-
 ### cloud-config cloud配置中心管理
