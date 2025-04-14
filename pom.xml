@@ -40,7 +40,8 @@
         <!-- 工具类模块 类似 Hutools -->
 <!--        <module>tools</module>-->
 
-<!--        <module>sp</module>-->
+        <!-- spring 项目模块 -->
+        <module>sp</module>
 
         <!-- lib 开源项目模块 -->
         <!-- 1 通用开源模块 -->

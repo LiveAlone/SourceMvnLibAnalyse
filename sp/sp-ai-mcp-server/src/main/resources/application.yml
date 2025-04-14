@@ -1,0 +1,15 @@
+logging:
+  pattern:
+    console:
+  file:
+    name: /Users/yqj/workspace/src/github/SourceMvnLibAnalyse/logs/sp-ai-mcp-server.log
+
+spring:
+  main:
+    banner-mode: off
+  ai:
+    mcp:
+      server:
+        name: mcp-server
+        version: 1.0.0
+

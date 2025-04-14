@@ -25,6 +25,8 @@
 
 <!--        <module>sp-webflux</module>-->
 <!--        <module>sp-ai</module>-->
+<!--        <module>sp-ai-mcp-server</module>-->
+<!--        <module>sp-ai-mcp-client</module>-->
 
 <!--        <module>sp-security</module>-->
 <!--        <module>sp-actuator</module>-->

@@ -1,0 +1,13 @@
+logging:
+  level:
+    root: INFO
+
+spring:
+  main:
+    banner-mode: off
+  ai:
+    mcp:
+      client:
+        enabled: true
+
+
