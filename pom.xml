@@ -41,11 +41,11 @@
 <!--        <module>tools</module>-->
 
         <!-- spring 项目模块 -->
-        <module>sp</module>
+<!--        <module>sp</module>-->
 
         <!-- lib 开源项目模块 -->
         <!-- 1 通用开源模块 -->
-<!--        <module>lib</module>-->
+        <module>lib</module>
 
         <!-- spring cloud -->
 <!--        <module>sp-cloud</module>-->

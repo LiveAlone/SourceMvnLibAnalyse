@@ -16,6 +16,9 @@
     </description>
 
     <modules>
+        <!-- tmp 模版 -->
+<!--        <module>tmp</module>-->
+
         <!-- zookeeper demo -->
 <!--        <module>zk</module>-->
 
@@ -33,6 +36,8 @@
         <!-- reactor 响应式编程支持 -->
 <!--        <module>reactor</module>-->
 
+        <!-- -->
+        <module>flowable</module>
     </modules>
 
 
