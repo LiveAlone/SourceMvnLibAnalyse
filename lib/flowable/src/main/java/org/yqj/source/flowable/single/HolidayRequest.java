@@ -14,6 +14,7 @@ import org.flowable.engine.repository.ProcessDefinition;
 import org.flowable.engine.runtime.ProcessInstance;
 import org.flowable.task.api.Task;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -37,60 +38,57 @@ public class HolidayRequest {
 
         ProcessEngine processEngine = cfg.buildProcessEngine();
 
-        // 获取 repository service, 解析xml
+        // 通过xml 导入Definition, 通过deptId 获取Definition
         RepositoryService repositoryService = processEngine.getRepositoryService();
         Deployment deployment = repositoryService.createDeployment()
                 .addClasspathResource("holiday-request.bpmn20.xml")
                 .deploy();
         log.info("deployment id: {}", deployment.getId());
 
-        // 获取definition
         ProcessDefinition processDefinition = repositoryService.createProcessDefinitionQuery()
                 .deploymentId(deployment.getId())
                 .singleResult();
         System.out.println("Found process definition : " + processDefinition.getName());
 
-        // 1 初始化数据定义
-        String employee = "yaoqijun";
-        Integer nrOfHolidays = 15;
-        String description = "rest";
-
-        // 2 开始执行过程
+        // 1 通过定义开始执行流程
         RuntimeService runtimeService = processEngine.getRuntimeService();
-
         Map<String, Object> variables = new HashMap<String, Object>();
-        variables.put("employee", employee);
-        variables.put("nrOfHolidays", nrOfHolidays);
-        variables.put("description", description);
+        variables.put("employee", "姚启俊");
+        variables.put("nrOfHolidays", 15);
+        variables.put("description", "休假请求描述信息");
         ProcessInstance processInstance =
                 runtimeService.startProcessInstanceByKey("holidayRequest", variables);
-        log.info("Started process instance with id: {} name:{}", processInstance.getId(), processInstance.getName());
+        log.info("Started process instance with id: {} name:{}", processInstance.getId(), processInstance.getBusinessKey());
 
-        // 作为 managers 获取任务列表
+        // 2. 作为Manager 查询需要审批任务列表
         TaskService taskService = processEngine.getTaskService();
         List<Task> tasks = taskService.createTaskQuery().taskCandidateGroup("managers").list();
         System.out.println("You have " + tasks.size() + " tasks:");
-        for (int i=0; i<tasks.size(); i++) {
-            System.out.println((i+1) + ") " + tasks.get(i).getName());
-        }
+        tasks.forEach(task -> {
+            System.out.println(task.getId() + ": " + task.getName() + " ("
+                    + task.getAssignee() + ")");
+        });
 
-        // 通过任务列表获取任务
-        Scanner scanner= new Scanner(System.in);
-        System.out.println("Which task would you like to complete?");
-        int taskIndex = Integer.valueOf(scanner.nextLine());
-        Task task = tasks.get(taskIndex - 1);
-        Map<String, Object> processVariables = taskService.getVariables(task.getId());
-        System.out.println(processVariables.get("employee") + " wants " +
-                processVariables.get("nrOfHolidays") + " of holidays. Do you approve this?");
+        Task task = tasks.get(0);
+        boolean approved;
 
-        // 执行任务
-        boolean approved = scanner.nextLine().toLowerCase().equals("y");
-        variables = new HashMap<String, Object>();
+//        // 3. 场景1 审批通过任务
+        approved = true;
+        variables = new HashMap<>();
         variables.put("approved", approved);
         taskService.complete(task.getId(), variables);
+        System.out.println("step 3 finish 审批通过");
+
+        // 4. 审批通过以后, 需要申请人确认
+        tasks = taskService.createTaskQuery().taskAssignee("姚启俊").list();
+        tasks.forEach(t -> {
+            System.out.println("Task for employee: " + t.getName());
+        });
+        taskService.complete(tasks.get(0).getId(), Collections.emptyMap());
+        System.out.println("step 4 finish 申请人确认");
 
 
-        // 查询历史记录
+        // 4.查询历史记录 展示列表
         HistoryService historyService = processEngine.getHistoryService();
         List<HistoricActivityInstance> activities =
                 historyService.createHistoricActivityInstanceQuery()
@@ -98,9 +96,8 @@ public class HolidayRequest {
                         .finished()
                         .orderByHistoricActivityInstanceEndTime().asc()
                         .list();
-
         for (HistoricActivityInstance activity : activities) {
-            System.out.println(activity.getActivityId() + " took "
+            System.out.println(activity.getActivityId() + " Name: " + activity.getActivityName() +  " took "
                     + activity.getDurationInMillis() + " milliseconds");
         }
     }
