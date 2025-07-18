@@ -6,8 +6,11 @@ import org.flowable.engine.RepositoryService;
 import org.flowable.engine.RuntimeService;
 import org.flowable.engine.TaskService;
 import org.flowable.engine.repository.Deployment;
+import org.flowable.engine.repository.ProcessDefinition;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * Description:
@@ -31,14 +34,11 @@ public class RunCommandLine implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        // 手动加载资源
-//        Deployment deployment = repositoryService.createDeployment()
-//                .addClasspathResource("holiday-request.bpmn20.xml")
-//                .deploy();
-//        log.info("deployment id: {}", deployment.getId());
-
-        System.out.println("Number of process definitions : "
-                + repositoryService.createProcessDefinitionQuery().count());
-        System.out.println("Number of tasks : " + taskService.createTaskQuery().count());
+        List<ProcessDefinition> definitions =
+                repositoryService.createProcessDefinitionQuery().list();
+        definitions.forEach(definition -> {
+            log.info("Process Definition ID: {}, Name: {}, Key: {}",
+                    definition.getId(), definition.getName(), definition.getKey());
+        });
     }
 }

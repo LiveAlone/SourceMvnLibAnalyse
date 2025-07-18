@@ -4,13 +4,17 @@ logging:
 
 spring:
   datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/flowable-spring-boot?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
-    username: root
-    password: 123456
-  jpa:
-    hibernate:
-      ddl-auto: update
+#    # 使用MySQL
+#    driver-class-name: com.mysql.cj.jdbc.Driver
+#    url: jdbc:mysql://127.0.0.1:3306/flowable-spring-boot?useSSL=false&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+#    username: root
+#    password: 123456
+    # 使用 H2
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:flowable-spring-boot;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+
 
 flowable:
   # 自动更新数据表, 注意这里表是判断当前实例是否存在，不是当前库是否存在
