@@ -1,4 +1,4 @@
-package org.yqj.source.tmp.dto;
+package org.yqj.source.report.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

@@ -36,8 +36,10 @@
         <!-- reactor 响应式编程支持 -->
 <!--        <module>reactor</module>-->
 
-        <!-- -->
-        <module>flowable</module>
+        <!-- 审批流 -->
+<!--        <module>flowable</module>-->
+        <!-- 大屏数据报表 -->
+<!--        <module>report</module>-->
     </modules>
 
 
